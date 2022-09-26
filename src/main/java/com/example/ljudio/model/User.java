@@ -45,5 +45,5 @@ public class User {
 
     @Column
     OneToMany
-    private List<UserService> playlist;
+    private List<Playlist> playlist;
 }
