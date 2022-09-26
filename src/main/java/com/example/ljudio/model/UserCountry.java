@@ -1,7 +1,6 @@
 package com.example.ljudio.model;
 
-import com.example.ljudio.enums.Role;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.ljudio.enums.Country;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,17 +9,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
 @ToString
+@EqualsAndHashCode
 @Entity
-@Table(name = "user_role")
-public class UserRole {
+@Table(name = "user_country")
+public class UserCountry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private byte role_id;
+    private long country_id;
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Role roles;
+    private Country country;
 }
