@@ -27,4 +27,5 @@ public class UserDAO {
     public User save(User newUser) {
         return userRepository.save(newUser);
     }
+
 }
