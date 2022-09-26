@@ -1,6 +1,7 @@
 package com.example.ljudio.model;
 
-import com.example.ljudio.service.UserService;
+import com.example.ljudio.enums.Country;
+import com.example.ljudio.enums.Role;
 import lombok.*;
 
 import javax.persistence.*;
