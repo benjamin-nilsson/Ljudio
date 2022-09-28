@@ -9,5 +9,4 @@ public class LjudioApplication {
     public static void main(String[] args) {
         SpringApplication.run(LjudioApplication.class, args);
     }
-
 }
