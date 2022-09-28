@@ -1,9 +1,7 @@
 package com.example.ljudio.service;
 
 import com.example.ljudio.dao.SongDAO;
-import com.example.ljudio.dao.UserDAO;
 import com.example.ljudio.model.Song;
-import com.example.ljudio.model.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +24,6 @@ public class SongService {
         return songDAO.save(newSong);
     }
 
-
     /*
     public Song addUserToSong(long songId, long userId) {
 
@@ -45,9 +42,6 @@ public class SongService {
         return songDAO.save(song);
     }
     */
-
-
-     */
 
     private Song findBySpotifyId(String spotifyId) {
         return getAllSongs().stream()
