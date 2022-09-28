@@ -34,9 +34,11 @@ public class Album {
     private String album_length;
 
     @Column
+    @ManyToOne
     private Artist artist;
 
     @Column
+    @OneToOne
     private AlbumImage albumImage;
 
     @Column
