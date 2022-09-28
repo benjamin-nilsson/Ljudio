@@ -13,7 +13,7 @@ import java.util.Optional;
 public class SongService {
 
     private final SongDAO songDAO;
-    private final UserDAO userDAO;
+    //private final UserDAO userDAO;
 
     public Song addSong(Song newSong) {
         Song song = findBySpotifyId(newSong.getSpotify_id());
@@ -24,6 +24,7 @@ public class SongService {
         return songDAO.save(newSong);
     }
 
+    /*
     public Song addUserToSong(long songId, long userId) {
         Optional<Song> maybeSong = songDAO.findSongById(songId);
         Optional<User> maybeUser = userDAO.findUserById(userId);
@@ -39,6 +40,8 @@ public class SongService {
         song.setUser_list(users);
         return songDAO.save(song);
     }
+
+     */
 
     private Song findBySpotifyId(String spotifyId) {
         return getAllSongs().stream()

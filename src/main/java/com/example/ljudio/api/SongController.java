@@ -19,11 +19,14 @@ public class SongController {
         return songService.addSong(newSong);
     }
 
+   /*
     @PutMapping("/{songId}/user/{id}")
     public Song addUserToSong(@PathVariable("songId") long songId,
                                    @PathVariable("id") long userId) {
         return songService.addUserToSong(songId, userId);
     }
+
+    */
 
     @GetMapping("/{songId}")
     public Song getSongById(@PathVariable("songId") long songId) {
