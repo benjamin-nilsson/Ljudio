@@ -3,7 +3,6 @@ package com.example.ljudio.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -34,9 +33,11 @@ public class Album {
     private String album_length;
 
     @Column
+    @ManyToOne
     private Artist artist;
 
     @Column
+    @OneToOne
     private AlbumImage albumImage;
 
     @Column
