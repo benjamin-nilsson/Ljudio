@@ -1,5 +1,6 @@
 package com.example.ljudio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,9 @@ public class Playlist {
     @ManyToMany
     private List<Song> songs;
 
-    //@ManyToOne
-    //private User user;
+    @ManyToOne
+    @JsonIgnore
+    private User user;
 
 
 }
