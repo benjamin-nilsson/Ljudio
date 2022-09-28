@@ -1,60 +1,30 @@
 package com.example.ljudio.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
+import java.util.List;
 
-@Entity(name="playlist")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "playlist")
 public class Playlist {
 
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String playlist;
 
-    //@ManyToMany
-    //private Song song;
+    @ManyToMany
+    private List<Song> songs;
 
     //@ManyToOne
     //private User user;
 
-    public Playlist(){
-    }
 
-    public Playlist(Integer id, String playlist) {
-        this.id = id;
-        this.playlist = playlist;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getPlaylist() {
-        return playlist;
-    }
-
-    public void setPlaylist(String playlist) {
-        this.playlist = playlist;
-    }
-
-    /*public Song getSong() {
-        return song;
-    }
-
-    public void setSong(Song song) {
-        this.song = song;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    */
 }
