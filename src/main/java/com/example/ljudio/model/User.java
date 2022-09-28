@@ -38,13 +38,14 @@ public class User {
     private LocalDate birthdate;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     @Column
-    ManyToOne
+    @Enumerated(EnumType.STRING)
     private Country country;
 
     @Column
-    OneToMany
+    @OneToMany
     private List<Playlist> playlist;
 }
