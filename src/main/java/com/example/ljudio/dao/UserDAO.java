@@ -3,10 +3,7 @@ package com.example.ljudio.dao;
 import com.example.ljudio.model.User;
 import com.example.ljudio.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
