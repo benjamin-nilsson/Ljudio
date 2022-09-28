@@ -1,12 +1,11 @@
 package com.example.ljudio.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import javax.persistence.*;
-import java.time.LocalTime;
-import java.util.List;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 @ToString
 @Getter
@@ -14,31 +13,34 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "song")
-public class Song {
+@Table(name = "album")
+public class Album {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long song_id;
+    private long album_id;
 
     @Column
     private String spotify_id;
 
     @Column
-    private String title;
+    private String name;
 
     @Column
-    private String album;
+    private int songs;
 
     @Column
-    private String songLength;
+    private String album_length;
 
     @Column
-    private LocalTime releaseDate;
+    private Artist artist;
+
+    @Column
+    private AlbumImage albumImage;
 
     @Column
     @ManyToMany
     @JsonIgnore
-    private List<Artist> artist_list;
+    private List<Song> songs_list;
 }

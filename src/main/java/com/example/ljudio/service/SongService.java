@@ -26,8 +26,9 @@ public class SongService {
 
     /*
     public Song addUserToSong(long songId, long userId) {
+
         Optional<Song> maybeSong = songDAO.findSongById(songId);
-        Optional<User> maybeUser = userDAO.findUserById(userId);
+        Optional<User> maybeUser = userDAO.findByID(userId);
         if (maybeUser.isEmpty() || maybeSong.isEmpty()) {
             return null;
         }
@@ -40,8 +41,7 @@ public class SongService {
         song.setUser_list(users);
         return songDAO.save(song);
     }
-
-     */
+    */
 
     private Song findBySpotifyId(String spotifyId) {
         return getAllSongs().stream()
