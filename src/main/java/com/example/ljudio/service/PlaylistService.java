@@ -38,9 +38,14 @@ public class PlaylistService {
         return maybeSong.orElse(null);
     }
 
-    public void DeleteSongFromPlaylist(Long id, String songName) {
-        Song songIdFromPlaylist = getSongIdFromPlaylist(id, songName);
-
-
+    public void DeleteSongFromPlaylist(Long playlistId, String songName) {
+        long songIdFromPlaylist = getSongIdFromPlaylist(playlistId, songName).getSong_id();
+        songDAO.deleteSongById(songIdFromPlaylist);
     }
+
+    public Song addSongToPlayList(Long playlistId, String songName){
+        Song songIdFromPlaylist = getSongIdFromPlaylist(playlistId, songName);
+        return songDAO.save(songIdFromPlaylist);
+    }
+
 }
