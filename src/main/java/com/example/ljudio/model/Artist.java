@@ -27,7 +27,7 @@ public class Artist {
     private String name;
 
     @Column
-    @ManyToMany
+    @OneToMany
     @JsonIgnore
     private List<Album> album_list;
 
