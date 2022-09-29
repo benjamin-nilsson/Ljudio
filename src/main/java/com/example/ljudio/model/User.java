@@ -1,6 +1,5 @@
 package com.example.ljudio.model;
 
-import com.example.ljudio.enums.Country;
 import com.example.ljudio.enums.Role;
 import lombok.*;
 
@@ -15,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -40,10 +39,6 @@ public class User {
     @Column
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    @Column
-    @Enumerated(EnumType.STRING)
-    private Country country;
 
     @Column
     @OneToMany

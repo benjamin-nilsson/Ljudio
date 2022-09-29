@@ -1,8 +1,8 @@
 package com.example.ljudio.service;
 
 import com.example.ljudio.dao.UserDAO;
-import com.example.ljudio.model.Playlist;
 import com.example.ljudio.model.User;
+import com.example.ljudio.model.Playlist;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

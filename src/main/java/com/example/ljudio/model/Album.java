@@ -32,13 +32,8 @@ public class Album {
     @Column
     private String album_length;
 
-    @Column
     @ManyToOne
     private Artist artist;
-
-    @Column
-    @OneToOne
-    private AlbumImage albumImage;
 
     @Column
     @ManyToMany
