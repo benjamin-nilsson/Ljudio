@@ -43,8 +43,13 @@ public class PlaylistController {
         return playlistService.getPlaylistById(id);
     }
 
-    @PutMapping("/{id}/song/{songId}")
+    @PutMapping("/{id}/songAdd/{songId}")
     public Playlist addSongToPlaylist(@PathVariable("id") long id, @PathVariable("songId") long songId) {
         return playlistService.addSongToPlayList(id, songId);
+    }
+
+    @PutMapping("/{id}/songDel/{songId}")
+    public Playlist addSongToPlayList(@PathVariable("id")long id, @PathVariable("songId") long songId) {
+        return playlistService.DeleteSongFromPlaylist(id, songId);
     }
 }
