@@ -3,6 +3,9 @@ package com.example.ljudio.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
@@ -21,15 +24,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long user_id;
 
+    @NotBlank
+    @Size(max = 20)
     @Column
     private String username;
 
     @Column
     private String name;
 
+    @NotBlank
+    @Size(max = 120)
     @Column
     private String password;
 
+    @Size(max = 50)
+    @Email
     @Column
     private String email;
 
