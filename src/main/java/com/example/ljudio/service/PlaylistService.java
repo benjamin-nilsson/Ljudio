@@ -67,4 +67,12 @@ public class PlaylistService {
         long songIdFromPlaylist = getSongIdFromPlaylist(playlistId, songName).getSong_id();
         songDAO.deleteSongById(songIdFromPlaylist);
     }
+
+    public List<Song> getSongsFromPlaylist(long id) {
+        Optional<Playlist> maybePlaylist = playlistDAO.getPlaylistById(id);
+
+        Playlist playlist = maybePlaylist.get();
+        List<Song> playlistSongs = playlist.getSongs();
+        return  playlistSongs;
+    }
 }
