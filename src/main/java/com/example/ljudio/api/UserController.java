@@ -18,8 +18,8 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
-    @GetMapping("/id")
-    public User getMemberById(long id) {
+    @GetMapping("/{id}")
+    public User getMemberById(@PathVariable("id") long id) {
         return userService.getMemberById(id);
     }
 
