@@ -68,7 +68,23 @@ public class PlaylistService {
         songDAO.deleteSongById(songIdFromPlaylist);
     }
 
-    public List<Song> getSongsFromPlaylist(long id) {
+    public Playlist addSongToPlayList(Long playlistId, long songId){
+
+        Song song = songDAO.findSongById(songId).get();
+        List<Song> playlistSongs = getSongsFromPlaylist(playlistId);
+        Playlist playlist = getPlaylistById(playlistId);
+
+        if (playlistSongs.contains(song)) {
+            return playlist;
+        }
+
+        playlistSongs.add(song);
+        playlist.setSongs(playlistSongs);
+
+        return playlistDAO.addPlaylist(playlist);
+    }
+
+    private List<Song> getSongsFromPlaylist(long id) {
         Optional<Playlist> maybePlaylist = playlistDAO.getPlaylistById(id);
 
         Playlist playlist = maybePlaylist.get();

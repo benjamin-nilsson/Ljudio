@@ -42,4 +42,9 @@ public class PlaylistController {
     public Playlist getPlaylistById(@PathVariable("id") Long id) {
         return playlistService.getPlaylistById(id);
     }
+
+    @PutMapping("/{id}/song/{songId}")
+    public Playlist addSongToPlaylist(@PathVariable("id") long id, @PathVariable("songId") long songId) {
+        return playlistService.addSongToPlayList(id, songId);
+    }
 }
