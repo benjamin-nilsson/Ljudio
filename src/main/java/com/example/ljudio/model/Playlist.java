@@ -19,7 +19,9 @@ public class Playlist {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
-    private String playlist;
+
+    @Column
+    private String name;
 
     @ManyToMany
     private List<Song> songs;
