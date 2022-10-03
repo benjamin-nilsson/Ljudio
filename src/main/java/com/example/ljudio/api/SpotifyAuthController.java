@@ -18,7 +18,7 @@ import java.io.IOException;
 public class SpotifyAuthController  {
 
     @Value("spotify.frontend.url")
-    String FRONTEND_URL;
+    String TEST_URL;
 
     @Autowired
     private SpotifyConnect spotifyConnect;
@@ -27,6 +27,6 @@ public class SpotifyAuthController  {
     public RedirectView handleAuthCode(@RequestParam String code) throws ParseException, SpotifyWebApiException, IOException {
         spotifyConnect.addAuthCode(code);
 
-        return new RedirectView(FRONTEND_URL);
+        return new RedirectView(TEST_URL);
     }
 }
