@@ -52,4 +52,9 @@ public class PlaylistController {
     public Playlist addSongToPlayList(@PathVariable("id")long id, @PathVariable("songId") long songId) {
         return playlistService.DeleteSongFromPlaylist(id, songId);
     }
+
+    @PutMapping("/{id}/delPlay/{userId}")
+    public List<Playlist> deletePlaylistFromUser(@PathVariable("id")Long id, @PathVariable("userId")long userId) {
+        return playlistService.deleteUserPlaylist(id, userId);
+    }
 }

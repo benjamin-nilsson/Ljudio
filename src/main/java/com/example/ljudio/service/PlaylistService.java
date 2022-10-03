@@ -54,6 +54,20 @@ public class PlaylistService {
         playlistDAO.deletePlaylistById(id);
     }
 
+    public List<Playlist> deleteUserPlaylist(Long id, long userId){
+        User user = userDAO.findByID(userId).get();
+        Playlist playlistFromUser = user.getPlaylist().stream()
+                .filter(playlist -> playlist.getId() == id)
+                .findFirst()
+                .orElse(null);
+        List<Playlist> playlists = user.getPlaylist();
+
+        playlists.remove(playlistFromUser);
+        user.setPlaylist(playlists);
+
+        return userDAO.save(user).getPlaylist();
+    }
+
     public Song getSongIdFromPlaylist(Long playlistId,String songName) {
         Optional<Song> maybeSong = getPlaylistById(playlistId)
                 .getSongs()
