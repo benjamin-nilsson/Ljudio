@@ -24,11 +24,11 @@ public class UserController {
     private CustomUserRepository userRepository;
 
     @GetMapping
-    public Iterable<User> getAllMembers() {
+    public List<User> getAllMembers() {
         return userRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<User> getMemberById(@PathVariable("id") long id) {
         User member = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
@@ -45,21 +45,21 @@ public class UserController {
         return userRepository.save(newUser);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user) {
         User currentUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+
         currentUser.setUsername(user.getUsername());
-        currentUser.setName(user.getName());
-        currentUser.setBirthdate(user.getBirthdate());
         currentUser.setEmail(user.getEmail());
+        currentUser.setRoles(user.getRoles());
 
-        // userService.addMember(user);
 
-        return ResponseEntity.ok(currentUser);
+        User updatedUser = userRepository.save(currentUser);
+        return ResponseEntity.ok(updatedUser);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
         User member = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
