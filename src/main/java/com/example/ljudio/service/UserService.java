@@ -14,6 +14,10 @@ public class UserService {
 
     private UserDAO userDAO;
 
+    public Iterable<User> getAllMembers() {
+        return userDAO.getAllMembers();
+    }
+
     public User getMemberById(long id) {
         return userDAO.findByID(id).orElse(null);
     }

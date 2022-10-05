@@ -3,16 +3,18 @@ package com.example.ljudio.service;
 import com.example.ljudio.model.Playlist;
 import com.example.ljudio.model.Song;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Service
+@NoArgsConstructor
 public class MediaService {
 
-    private final SongService songService;
-    private final PlaylistService playlistService;
+    private  SongService songService;
+    private  PlaylistService playlistService;
     private Song currentSong;
     private int currentSongIndex;
     private Song nextSong;
