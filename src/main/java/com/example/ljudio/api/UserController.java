@@ -2,13 +2,17 @@ package com.example.ljudio.api;
 
 import com.example.ljudio.model.User;
 import com.example.ljudio.model.Playlist;
+import com.example.ljudio.repository.CustomUserRepository;
 import com.example.ljudio.service.UserService;
 import lombok.AllArgsConstructor;
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @RestController
@@ -17,10 +21,18 @@ public class UserController {
 
     @Autowired
     private final UserService userService;
+    private CustomUserRepository userRepository;
+
+    @GetMapping
+    public Iterable<User> getAllMembers() {
+        return userRepository.findAll();
+    }
 
     @GetMapping("/{id}")
-    public User getMemberById(@PathVariable("id") long id) {
-        return userService.getMemberById(id);
+    public ResponseEntity<User> getMemberById(@PathVariable("id") long id) {
+        User member = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+        return ResponseEntity.ok(member);
     }
 
     @GetMapping("/{username}/{password}")
@@ -30,12 +42,13 @@ public class UserController {
 
     @PostMapping
     public User addUser(@RequestBody User newUser) {
-        return userService.addMember(newUser);
+        return userRepository.save(newUser);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user) {
-        User currentUser = userService.getMemberById(id);
+        User currentUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
         currentUser.setUsername(user.getUsername());
         currentUser.setName(user.getName());
         currentUser.setBirthdate(user.getBirthdate());
@@ -45,6 +58,19 @@ public class UserController {
 
         return ResponseEntity.ok(currentUser);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
+        User member = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+
+        userRepository.delete(member);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+
+
 
     @GetMapping("/{id}/playlists")
     public List<Playlist> getUserPlaylists(@PathVariable long id) {
