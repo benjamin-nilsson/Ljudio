@@ -1,11 +1,14 @@
 .header {
-  background: var(--ljudio-color);
+  background-image: url("./../../public/Ljudio_logo_white.svg"),
+    var(--ljudio-color);
   display: flex;
-  height: 10vh;
-  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
   align-items: center;
-}
-
-.header-image {
-  background: url(Ljudio_logo_white.png);
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  padding: 60px 10px;
 }
