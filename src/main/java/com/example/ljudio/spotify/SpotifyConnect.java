@@ -1,3 +1,4 @@
+/*
 package com.example.ljudio.spotify;
 
 import com.wrapper.spotify.SpotifyApi;
@@ -97,4 +98,4 @@ public class SpotifyConnect {
     public SpotifyApi getSpotifyApi() {
         return spotifyApi;
     }
-}
+}*/
