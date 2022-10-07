@@ -11,18 +11,14 @@
   overflow: hidden;
 }
 
-html {
-  background: var(--secondary-color);
-  min-width: 320px;
-  height: 100%;
-}
-
+html,
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
   text-decoration: none;
   color: var(--text-color);
   background: var(--secondary-color);
+  height: 100%;
 }
 
 label {
