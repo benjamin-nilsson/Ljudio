@@ -1,0 +1,53 @@
+.home {
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  margin-top: 45rem;
+  overflow: auto;
+  width: 100%;
+}
+
+.profile-image img {
+  border-radius: 50%;
+  max-width: 20%;
+  height: auto;
+}
+
+.profile-user {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.create-playlist {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-playlist p {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.home-button {
+  color: var(--text-color);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 10%;
+}
+
+.playlist-image {
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.playlist-image img {
+  max-width: 15%;
+  height: auto;
+}
