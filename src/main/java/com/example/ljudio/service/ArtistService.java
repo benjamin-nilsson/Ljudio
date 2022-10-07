@@ -2,6 +2,7 @@ package com.example.ljudio.service;
 
 import com.example.ljudio.dao.ArtistDAO;
 import com.example.ljudio.dao.SongDAO;
+import com.example.ljudio.model.Album;
 import com.example.ljudio.model.Artist;
 import com.example.ljudio.model.Song;
 import lombok.AllArgsConstructor;
@@ -18,19 +19,12 @@ public class ArtistService {
     private final SongDAO songDAO;
 
     public Artist addArtist(Artist newArtist) {
-        Artist artist = findBySpotifyId(newArtist.getSpotify_id());
+        Artist artist = getArtistBySpotifyId(newArtist.getSpotify_id());
 
         if (artist != null) {
             return artist;
         }
         return artistDAO.save(newArtist);
-    }
-
-    private Artist findBySpotifyId(String spotifyId) {
-        return getAllArtists().stream()
-                .filter(artist -> artist.getSpotify_id().equalsIgnoreCase(spotifyId))
-                .findFirst()
-                .orElse(null);
     }
 
     private List<Artist> getAllArtists() {
@@ -66,15 +60,22 @@ public class ArtistService {
         artistDAO.deleteArtistById(artist.getArtist_id());
     }
 
-    public Artist getArtistBySpotifyId(long spotifyId) {
-        return artistDAO.getArtistBySpotifyId(spotifyId).orElse(null);
+    public Artist getArtistBySpotifyId(String spotifyId) {
+        return getAllArtists().stream()
+                .filter(artist -> artist.getSpotify_id().equals(spotifyId))
+                .findFirst()
+                .orElse(null);
     }
 
     public Artist getArtistByName(String name) {
         return artistDAO.findArtistByName(name).orElse(null);
     }
 
-    public Artist getAlbumByArtist(String album) {
-        return artistDAO.findAlbumByArtist(album).orElse(null);
+    public List<Album> getAlbumsByArtist(String artistId) {
+        Artist maybeArtist = getArtistBySpotifyId(artistId);
+        if (maybeArtist == null)
+            return null;
+
+        return maybeArtist.getAlbum_list();
     }
 }

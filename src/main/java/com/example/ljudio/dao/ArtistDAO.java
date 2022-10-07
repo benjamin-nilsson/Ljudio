@@ -41,12 +41,4 @@ public class ArtistDAO {
     public Optional<Artist> findArtistByName(String name) {
         return artistRepository.findById(Long.valueOf(name));
     }
-
-    public Optional<Artist> findAlbumByArtist(String album) {
-        return artistRepository.findById(Long.valueOf(album));
-    }
-
-    public Optional<Artist> getArtistBySpotifyId(long spotifyId) {
-        return artistRepository.findById(spotifyId);
-    }
 }
