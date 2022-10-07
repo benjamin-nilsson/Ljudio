@@ -2,11 +2,13 @@
 
 :root {
   --ljudio-color: linear-gradient(#a12424, #ff5050);
+  --footer-color: linear-gradient(#ff5050, #a12424);
   --primary-color: #a12424;
   --btn-color-hover: #a12424;
   --secondary-color: #626262;
   --third-color: #000;
   --text-color: #fff;
+  overflow: hidden;
 }
 
 html {
