@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Service
+@NoArgsConstructor
 public class MediaService {
 
     private SongService songService;
@@ -19,6 +20,7 @@ public class MediaService {
     private int currentIndex;
     private Song next;
     private Song previous;
+
 
     public Song song(long songId, long playlistId) {
         current = songService.getSongByID(songId);
