@@ -1,4 +1,4 @@
-/*package com.example.ljudio.api;
+package com.example.ljudio.api;
 
 import com.example.ljudio.spotify.SpotifyConnect;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -13,9 +13,10 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 
-@RequestMapping("/api/spotify-auth")
+@RequestMapping("api/spotify-auth")
 @RestController
 public class SpotifyAuthController  {
+
     @Value("spotify.frontend.url")
     String TEST_URL;
 
@@ -26,6 +27,6 @@ public class SpotifyAuthController  {
     public RedirectView handleAuthCode(@RequestParam String code) throws ParseException, SpotifyWebApiException, IOException {
         spotifyConnect.addAuthCode(code);
 
-        return new RedirectView("https://localhost:3000");
+        return new RedirectView(TEST_URL);
     }
-}*/
+}

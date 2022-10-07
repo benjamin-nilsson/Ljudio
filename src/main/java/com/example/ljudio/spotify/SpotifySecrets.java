@@ -1,4 +1,4 @@
-/*package com.example.ljudio.spotify;
+package com.example.ljudio.spotify;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -69,4 +69,4 @@ public class SpotifySecrets {
         authorizationCodeRefresh_Sync();
         authorizationCodeRefresh_Async();
     }
-}*/
+}

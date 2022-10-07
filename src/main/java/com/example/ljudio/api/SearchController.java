@@ -30,8 +30,5 @@ public class SearchController {
         return searchService.track(spotifyId);
     }
 
-    @GetMapping("/album/{albumAPIId}")
-    public Album album(@PathVariable("albumAPIId") String apiId) {
-        return searchService.album(apiId);
-    }
+
 }
