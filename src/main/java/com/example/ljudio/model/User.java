@@ -29,9 +29,6 @@ public class User {
     @Column
     private String username;
 
-    @Column
-    private String name;
-
     @NotBlank
     @Size(max = 120)
     @Column
@@ -41,9 +38,6 @@ public class User {
     @Email
     @Column
     private String email;
-
-    @Column
-    private LocalDate birthdate;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
