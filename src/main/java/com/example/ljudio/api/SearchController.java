@@ -1,5 +1,7 @@
 package com.example.ljudio.api;
 
+import com.example.ljudio.model.Album;
+import com.example.ljudio.model.Song;
 import com.example.ljudio.service.SearchService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +24,11 @@ public class SearchController {
     public Map<String, Map<String, String>> search(@PathVariable("title") String title, @PathVariable("artist") String artist) {
         return searchService.search(title, artist);
     }
+
+    @GetMapping("/{songAPIId}")
+    public Song track(@PathVariable("songAPIId") String spotifyId) {
+        return searchService.track(spotifyId);
+    }
+
 
 }

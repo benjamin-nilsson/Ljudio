@@ -1,10 +1,13 @@
 package com.example.ljudio.api;
 
+import com.example.ljudio.model.Album;
 import com.example.ljudio.model.Artist;
 import com.example.ljudio.service.ArtistService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/artist")
@@ -36,7 +39,7 @@ public class ArtistController {
     }
 
     @GetMapping("/{spotifyId}")
-    public Artist getArtistBySpotifyId(@PathVariable("spotifyId") long spotifyId) {
+    public Artist getArtistBySpotifyId(@PathVariable("spotifyId") String spotifyId) {
         return artistService.getArtistBySpotifyId(spotifyId);
     }
 
@@ -45,8 +48,8 @@ public class ArtistController {
         return artistService.getArtistByName(name);
     }
 
-    @GetMapping("/{album}")
-    public Artist getAlbumByArtist(@PathVariable("album") String album) {
-        return artistService.getAlbumByArtist(album);
+    @GetMapping("/{albums}")
+    public List<Album> getAlbumsByArtist(@PathVariable("albums") String artistAPIId) {
+        return artistService.getAlbumsByArtist(artistAPIId);
     }
 }

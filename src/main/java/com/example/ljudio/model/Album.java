@@ -30,13 +30,21 @@ public class Album {
     private int songs;
 
     @Column
-    private String album_length;
+    private String albumImage;
 
     @ManyToOne
     private Artist artist;
 
     @Column
     @ManyToMany
-    @JsonIgnore
     private List<Song> songs_list;
+
+    public Album(String spotify_id, String name, int songs, String albumImage, Artist artist, List<Song> songs_list) {
+        this.spotify_id = spotify_id;
+        this.name = name;
+        this.songs = songs;
+        this.albumImage = albumImage;
+        this.artist = artist;
+        this.songs_list = songs_list;
+    }
 }
