@@ -29,10 +29,6 @@ public class AlbumDAO {
         albumRepository.deleteById(albumId);
     }
 
-    public Optional<Album> findAlbumBySpotifyId(long spotifyId) {
-        return albumRepository.findById(spotifyId);
-    }
-
     public Optional<Album> findArtistByName(String name) {
         return albumRepository.findById(Long.valueOf(name));
     }
