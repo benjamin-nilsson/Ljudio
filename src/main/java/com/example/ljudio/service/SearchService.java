@@ -228,4 +228,128 @@ public class SearchService {
         }
     }
 
+    public Album album(String albumApiId) {
+        Album maybeAlbum = albumService.findBySpotifyId(albumApiId);
+        System.out.println(maybeAlbum);
+        if (maybeAlbum != null)
+            return maybeAlbum;
+
+        BufferedReader reader;
+        String line;
+        StringBuilder responseContent = new StringBuilder();
+
+        HttpsURLConnection connection = null;
+        try {
+            URL url = new URL("https://api.spotify.com/v1/albums/" + albumApiId);
+            connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+
+            System.out.println(connection.toString());
+            System.out.println(url);
+
+            int status = connection.getResponseCode();
+            System.out.println(status);
+            if (status > 200)
+                return null;
+            else {
+                reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                while ((line = reader.readLine()) != null)
+                    responseContent.append(line);
+                reader.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            assert connection != null;
+            connection.disconnect();
+        }
+
+        return parseAlbum(responseContent.toString(), albumApiId);
+    }
+
+    private Album parseAlbum(String responseBody, String albumAPIId) {
+
+        JSONObject album = new JSONObject(responseBody);
+
+        try {
+            String name = album.getString("name");
+            JSONArray songItem = album.getJSONArray("artists");
+            String artistId = songItem.getJSONObject(0).getString("id");
+            int totalTracks = album.getInt("total_tracks");
+            String image = album.getJSONArray("images").getJSONObject(0).getString("url");
+
+            return new Album(albumAPIId, name, totalTracks, image, artist(artistId), new ArrayList<>());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /*public List<Album> albums(String artistId) {
+        List<Album> maybeAlbums = artistService.getAlbumsByArtist(artistId);
+        System.out.println(maybeAlbums);
+        if (maybeAlbums != null)
+            return maybeAlbums;
+
+        BufferedReader reader;
+        String line;
+        StringBuilder responseContent = new StringBuilder();
+
+        HttpsURLConnection connection = null;
+        try {
+            URL url = new URL("https://api.spotify.com/v1/artjsts/" + artistId + "/albums");
+            connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Authorization", "Bearer " + token);
+
+            System.out.println(connection.toString());
+            System.out.println(url);
+
+            int status = connection.getResponseCode();
+            System.out.println(status);
+            if (status > 200)
+                return null;
+            else {
+                reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                while ((line = reader.readLine()) != null)
+                    responseContent.append(line);
+                reader.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            assert connection != null;
+            connection.disconnect();
+        }
+
+        return parseAlbum(responseContent.toString(), artistId);
+    }
+
+    private List<Album> parseAlbum(String responseBody, String artistId) {
+        List<Album> listOfAlbums = new ArrayList<>();
+
+        JSONObject albums = new JSONObject(responseBody);
+
+        try {
+            JSONArray songItem = albums.getJSONArray("items");
+            String name = songItem.getJSONObject(0).getString("name");
+            String albumId = songItem.getJSONObject(0).getString("id");
+            int totalTracks = Integer.parseInt(songItem.getJSONObject(0).getString("total_tracks"));
+            String image = songItem.getJSONObject(2).getJSONArray("images").getJSONObject(0).getString("url");
+
+            listOfAlbums.add(new Album(albumId, name, totalTracks, image, artistService.getArtistBySpotifyId(artistId), new ArrayList<>()));
+
+            return listOfAlbums;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }*/
 }
