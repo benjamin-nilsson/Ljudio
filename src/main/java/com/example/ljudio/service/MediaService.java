@@ -11,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Service
-@NoArgsConstructor
 public class MediaService {
 
     private SongService songService;
