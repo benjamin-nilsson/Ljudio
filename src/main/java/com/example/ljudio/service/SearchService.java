@@ -228,8 +228,8 @@ public class SearchService {
         }
     }
 
-    public Album album(String albumAPIId) {
-        Album maybeAlbum = albumService.findBySpotifyId(albumAPIId);
+    public Album album(String albumApiId) {
+        Album maybeAlbum = albumService.findBySpotifyId(albumApiId);
         System.out.println(maybeAlbum);
         if (maybeAlbum != null)
             return maybeAlbum;
@@ -240,7 +240,7 @@ public class SearchService {
 
         HttpsURLConnection connection = null;
         try {
-            URL url = new URL("https://api.spotify.com/v1/albums/" + albumAPIId);
+            URL url = new URL("https://api.spotify.com/v1/albums/" + albumApiId);
             connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
@@ -267,7 +267,7 @@ public class SearchService {
             connection.disconnect();
         }
 
-        return parseAlbum(responseContent.toString(), albumAPIId);
+        return parseAlbum(responseContent.toString(), albumApiId);
     }
 
     private Album parseAlbum(String responseBody, String albumAPIId) {
