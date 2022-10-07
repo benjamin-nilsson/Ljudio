@@ -1,3 +1,4 @@
+/*
 package com.example.ljudio.api;
 
 import com.example.ljudio.spotify.SpotifyConnect;
@@ -30,3 +31,4 @@ public class SpotifyAuthController  {
         return new RedirectView(TEST_URL);
     }
 }
+*/

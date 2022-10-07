@@ -34,3 +34,4 @@ public class SearchController {
     public Album album(@PathVariable("albumApiId") String apiId) {
         return searchService.album(apiId);
     }
+}
