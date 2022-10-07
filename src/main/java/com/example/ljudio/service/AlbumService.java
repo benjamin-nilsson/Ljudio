@@ -22,7 +22,7 @@ public class AlbumService {
         return albumDAO.save(newAlbum);
     }
 
-    private Album findBySpotifyId(String spotifyId) {
+    public Album findBySpotifyId(String spotifyId) {
         return getAllAlbums().stream()
                 .filter(album -> album.getSpotify_id().equalsIgnoreCase(spotifyId))
                 .findFirst()
@@ -44,14 +44,6 @@ public class AlbumService {
         Album album = maybeAlbum.get();
 
         albumDAO.deleteAlbumById(album.getAlbum_id());
-    }
-
-    public Album getAlbumBySpotifyId(long spotifyId) {
-        return albumDAO.findAlbumBySpotifyId(spotifyId).orElse(null);
-    }
-
-    public Album getAlbumByName(String name) {
-        return albumDAO.findArtistByName(name).orElse(null);
     }
 
     public Album getArtistByAlbum(String artist) {
