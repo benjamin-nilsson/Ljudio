@@ -1,0 +1,35 @@
+.col-md-12 {
+    display: flex;
+}
+
+.col-md-12-card {
+    justify-content: center;
+}
+
+.card-container.card {
+    padding: 50px 40px;
+    text-align: center;
+}
+
+.column-login {
+    padding: 50px 30px;
+    font-size: 30px;
+
+}
+
+.column-login u {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--primary-color);
+}
+
+.form-control {
+    border-radius: 20px;
+    border: none;
+    height: 70px;
+    width: 100%;
+}
+.form-control, input {
+    font-size: 25px;
+    padding-left: 10px;
+}
