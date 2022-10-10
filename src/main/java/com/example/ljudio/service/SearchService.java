@@ -22,7 +22,7 @@ public class SearchService {
     private SongService songService;
     private ArtistService artistService;
     private AlbumService albumService;
-    private String token = "BQDecZUAvog-2c-1HsV8TVIiG5ddkdMl-sHWnkKokBAVnEE8c-7wnwiFSYewbLush8ATLPtOZgxF0z-GHe8qloHhSuPZAywvU5-vUo-iC2kJGK10mcJxEbkdQsBGYS7tsZAZtoNX2Ru4k4_nDNDht7GlsJrW1VaUqSDBXgfJHVC7J_5gHyYvaIU";
+    private String token = "BQAPkxoxx6T1Qu8dcSipyFhUJpkWUaXz2tM5whsKJ7pHRMMtUAJyRL3eKCeDH4L5TQesl0rhiNaEbdS5EF3YfJpSB441snM1DmY0ZoLZhFrWYJDj0Jx749QjrkMmHBANU-0gq49K2skWYVbqcQCX2RS5NQCQKye5DeEc21RolQZ27XXokF3xOw4";
     public SearchService(SongService songService, ArtistService artistService, AlbumService albumService) {
         this.songService = songService;
         this.artistService = artistService;
@@ -30,7 +30,7 @@ public class SearchService {
     }
 
 
-    public Map<String, Map<String, String>> search(String title, String artist) {
+    public List<Map<String, Map<String, String>>> search(String title, String artist) {
         BufferedReader reader;
         String line;
         StringBuilder responseContent = new StringBuilder();
@@ -70,8 +70,8 @@ public class SearchService {
 
         return parseSearch(responseContent.toString());
     }
-    private Map<String, Map<String, String>> parseSearch(String responseBody) {
-        Map<String, Map<String, String>> searchResult = new HashMap<>();
+    private List<Map<String, Map<String, String>>> parseSearch(String responseBody) {
+        List<Map<String, Map<String, String>>> searchResult = new ArrayList<>();
         JSONObject song = new JSONObject(responseBody);
         JSONArray songArray = song.getJSONObject("tracks").getJSONArray("items");
 
@@ -79,6 +79,7 @@ public class SearchService {
             int firstObject = 0;
             int mostPopularSongs = 5;
             for (int i = 0; i < mostPopularSongs; i++) {
+                Map<String, Map<String, String>> songTrack = new HashMap<>();
                 JSONObject songItem = songArray.getJSONObject(i);
                 String id = songItem.getString("id");
 
@@ -88,11 +89,14 @@ public class SearchService {
 
                 Map<String, String> songSpecs = new HashMap<>();
 
+                songSpecs.put("id", id);
                 songSpecs.put("songName", songItem.getString("name"));
                 songSpecs.put("image", albumImage.getString("url"));
                 songSpecs.put("artistName", artistsName.getString("name"));
 
-                searchResult.put(id, songSpecs);
+                songTrack.put("track", songSpecs);
+
+                searchResult.add(songTrack);
             }
 
             return searchResult;

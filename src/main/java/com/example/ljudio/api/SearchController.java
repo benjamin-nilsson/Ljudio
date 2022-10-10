@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -21,7 +22,7 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping("/{title}/{artist}")
-    public Map<String, Map<String, String>> search(@PathVariable("title") String title, @PathVariable("artist") String artist) {
+    public List<Map<String, Map<String, String>>> search(@PathVariable("title") String title, @PathVariable("artist") String artist) {
         return searchService.search(title, artist);
     }
 
