@@ -9,33 +9,34 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @AllArgsConstructor
-@Service
 @NoArgsConstructor
+@Service
 public class MediaService {
 
-    private  SongService songService;
-    private  PlaylistService playlistService;
-    private Song currentSong;
-    private int currentSongIndex;
-    private Song nextSong;
-    private Song previousSong;
+    private SongService songService;
+    private PlaylistService playlistService;
+    private Song current;
+    private int currentIndex;
+    private Song next;
+    private Song previous;
+
 
     public Song song(long songId, long playlistId) {
-        currentSong = songService.getSongByID(songId);
+        current = songService.getSongByID(songId);
         Playlist playlist = playlistService.getPlaylistById(playlistId);
         List<Song> playlistSongs = playlist.getSongs();
-        currentSongIndex = playlistSongs.indexOf(currentSong);
-        nextSong = playlistSongs.get(currentSongIndex + 1);
-        previousSong = playlistSongs.get(currentSongIndex - 1);
+        currentIndex = playlistSongs.indexOf(current);
+        next = playlistSongs.get(currentIndex + 1);
+        previous = playlistSongs.get(currentIndex - 1);
 
-        return currentSong;
+        return current;
     }
 
     public Song next() {
-        return nextSong;
+        return next;
     }
 
     public Song previous() {
-        return previousSong;
+        return previous;
     }
 }

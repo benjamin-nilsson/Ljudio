@@ -12,3 +12,15 @@ const checkStatus = response => {
     });
     return Promise.reject(error);
 }
+
+    export const search = (title, artist) =>
+        fetch(`/api/spotify/${title}/${artist}`)
+            .then(checkStatus);
+
+    export const track = songAPIId =>
+        fetch(`/api/spotify/${songAPIId}`)
+            .then(checkStatus);
+
+    export const album = albumAPIId =>
+        fetch(`/api/spotify/album/${albumAPIId}`)
+            .then(checkStatus);

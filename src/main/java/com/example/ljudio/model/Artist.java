@@ -31,4 +31,9 @@ public class Artist {
     @JsonIgnore
     private List<Album> album_list;
 
+    public Artist(String spotify_id, String name, List<Album> album_list) {
+        this.spotify_id = spotify_id;
+        this.name = name;
+        this.album_list = album_list;
+    }
 }

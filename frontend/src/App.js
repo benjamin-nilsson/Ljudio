@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
 import "./App.css";
 import "./css/Header.css";
 
@@ -12,6 +12,7 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
 import AddEmployeeComponent from "./components/AddEmployeeComponent";
+import Footer from "./components/Footer";
 
 import EventBus from "./common/EventBus";
 
@@ -50,7 +51,6 @@ const App = () => {
           Home
         </Link>
       </li>
-
       {showAdminBoard && (
         <li className="nav-item">
           <Link to={"/admin"} className="nav-link">
@@ -106,6 +106,7 @@ const App = () => {
           <Route path="/edit-employee/:id" element={<AddEmployeeComponent />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };

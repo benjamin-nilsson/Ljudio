@@ -29,16 +29,20 @@ public class Song {
     private String title;
 
     @Column
-    private String album;
+    private String albumId;
 
     @Column
-    private String songLength;
-
-    @Column
-    private LocalTime releaseDate;
+    private String releaseDate;
 
     @Column
     @ManyToMany
-    @JsonIgnore
     private List<Artist> artist_list;
+
+    public Song(String spotify_id, String title, String albumId, String releaseDate, List<Artist> artist_list) {
+        this.spotify_id = spotify_id;
+        this.title = title;
+        this.albumId = albumId;
+        this.releaseDate = releaseDate;
+        this.artist_list = artist_list;
+    }
 }
