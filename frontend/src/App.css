@@ -2,6 +2,8 @@
 
 :root {
   --ljudio-color: linear-gradient(#a12424, #ff5050);
+  --footer-color: linear-gradient(#ff5050, #a12424);
+
   --primary-color: #a12424;
   --btn-color-hover: #a12424;
   --secondary-color: #626262;
@@ -15,12 +17,20 @@ html {
   height: 100%;
 }
 
+  overflow: hidden;
+}
+
+html,
+
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
   text-decoration: none;
   color: var(--text-color);
   background: var(--secondary-color);
+
+  height: 100%;
+
 }
 
 label {
@@ -40,6 +50,7 @@ label {
   padding: 50px 40px;
   text-align: center;
 }
+
 
 .column-login {
   padding: 50px 30px;
@@ -68,6 +79,8 @@ input {
   font-size: 25px;
   padding-left: 10px;
 }
+
+
 
 
 .app {

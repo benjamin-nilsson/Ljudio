@@ -1,0 +1,29 @@
+body {
+  overflow: auto !important;
+}
+.register-main-container {
+  display: flex;
+  padding-top: 35px;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50vw;
+}
+
+#activate-signup-form,
+#activate-login-form {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 15px;
+}
+
+#activate-login-form.active,
+#activate-signup-form.active {
+  color: #ffffff;
+  border-bottom: 3px solid var(--primary-color);
+}
