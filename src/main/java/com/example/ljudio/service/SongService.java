@@ -43,9 +43,9 @@ public class SongService {
     }
     */
 
-    private Song findBySpotifyId(String spotifyId) {
+    public Song findBySpotifyId(String spotifyId) {
         return getAllSongs().stream()
-                .filter(song -> song.getSpotify_id().equalsIgnoreCase(spotifyId))
+                .filter(song -> song.getSpotify_id().equals(spotifyId))
                 .findFirst()
                 .orElse(null);
     }

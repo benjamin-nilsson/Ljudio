@@ -12,6 +12,10 @@ public class UserDAO {
 
     private UserRepository userRepository;
 
+    public Iterable<User> getAllMembers() {
+        return userRepository.findAll();
+    }
+
     public Optional<User> findByID(long id) {
         return userRepository.findById(id);
     }

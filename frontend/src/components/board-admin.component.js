@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-
+import { Button } from 'antd';
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import EmployeeService from '../services/EmployeeService'
 import {Link} from "react-router-dom";
+
 
 const BoardAdmin = () => {
     const [content, setContent] = useState("");
@@ -80,8 +81,8 @@ const BoardAdmin = () => {
                                     alignItems: "center"
                                 }}>
                                     <Link className="btn btn-info" to={`/edit-employee/${employee.id}`} >Update</Link>
-                                    <button className = "btn btn-danger" onClick = {() => deleteEmployee(employee.id)}
-                                            style = {{marginLeft:"10px"}}> Delete</button>
+                                    <Button className = "btn btn-danger" onClick = {() => deleteEmployee(employee.id)}
+                                            style = {{marginLeft:"10px"}}> Delete</Button>
                                 </td>
                             </tr>
                     )
