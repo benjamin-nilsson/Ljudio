@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./../css/Home.css";
+import "./../css/Playlist.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import UserService from "../services/user.service";
@@ -54,19 +54,21 @@ const Home = () => {
           icon={<PlusOutlined style={{ fontSize: "190%" }} />}
         />
       </div>
-      <div className="playlist"></div>
-      <div className="playlist-image">
-        <img
-          src={
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
-          }
-        />
-        <Button
-          className="home-button"
-          type="create"
-          href="/create"
-          icon={<RightOutlined style={{ fontSize: "190%" }} />}
-        />
+      <div className="playlist">
+        <div className="playlist-image">
+          <img
+            src={
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
+            }
+          />
+          <p>Playlist name</p>
+          <Button
+            className="home-button"
+            type="create"
+            href="/create"
+            icon={<RightOutlined style={{ fontSize: "190%" }} />}
+          />
+        </div>
       </div>
       <Footer />
     </div>
