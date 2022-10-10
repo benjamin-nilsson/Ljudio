@@ -1,0 +1,8 @@
+.search {
+  display: flex;
+}
+
+.box {
+  justify-content: center;
+  width: 100%;
+}
