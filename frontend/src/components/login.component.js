@@ -5,6 +5,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
+import {Col, Row} from "antd";
 
 const required = (value) => {
   if (!value) {
@@ -50,7 +51,7 @@ const Login = () => {
           navigate("/profile");
           window.location.reload();
         },
-        (error) => {
+        () => {
           /* const resMessage =
                         (error.response &&
                             error.response.data &&
@@ -70,16 +71,21 @@ const Login = () => {
 
   return (
     <div className="col-md-12">
+      <div className="col-md-12-card">
+      <div className="column-login" align="center">
+      <Row gutter={[24, 16]}>
+        <Col span={12}>
+           <u>SIGN IN</u>
+        </Col>
+        <Col span={12}>
+          <a href="/register">  SIGN UP </a>
+        </Col>
+      </Row>
+      </div>
       <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
 
         <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
+          <div className="username-input">
             <Input
               type="text"
               className="form-control"
@@ -87,11 +93,11 @@ const Login = () => {
               value={username}
               onChange={onChangeUsername}
               validations={[required]}
+              placeholder="username"
             />
           </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <br/>
+          <div className="password-input">
             <Input
               type="password"
               className="form-control"
@@ -99,6 +105,7 @@ const Login = () => {
               value={password}
               onChange={onChangePassword}
               validations={[required]}
+              placeholder="password"
             />
           </div>
           <br />
@@ -108,12 +115,6 @@ const Login = () => {
               {loading && <span className="spinner-border spinner-border-sm" />}
               <span>Login</span>
             </button>
-            <br />
-            <br />
-            <Link to="/register" className="btn btn-primary btn-block">
-              {" "}
-              Register{" "}
-            </Link>
           </div>
 
           {message && (
@@ -126,6 +127,7 @@ const Login = () => {
 
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
+      </div>
       </div>
     </div>
   );
