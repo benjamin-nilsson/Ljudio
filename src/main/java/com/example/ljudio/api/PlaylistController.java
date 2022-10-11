@@ -23,9 +23,9 @@ public class PlaylistController {
         return playlistService.getAllPlaylist();
     }
 
-    @PutMapping("/{id}/playlist/${playlistId}/addPlaylist")
-    public Playlist addPlaylist(@PathVariable("userId") long userId, @PathVariable("playlistId") long playlistId){
-        return (Playlist) playlistService.addPlaylistToUser(playlistId, userId);
+    @PostMapping
+    public Playlist addPlaylist(@RequestBody Playlist playlist) {
+        return playlistService.addPlaylist(playlist);
     }
 
     @PutMapping("/{id}/user/{userId}")

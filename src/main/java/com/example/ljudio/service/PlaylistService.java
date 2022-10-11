@@ -24,7 +24,9 @@ public class PlaylistService {
         return playlistDAO.getAllPlaylist();
     }
 
-
+    public Playlist addPlaylist(Playlist playlist) {
+        return playlistDAO.addPlaylist(playlist);
+    }
 
     public List<Playlist> addPlaylistToUser(long playlistId, long userId) {
         Optional<Playlist> maybePlaylist = playlistDAO.getPlaylistById(playlistId);
