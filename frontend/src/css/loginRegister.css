@@ -1,0 +1,51 @@
+.col-md-12 {
+    display: flex;
+}
+
+.col-md-12-card {
+    justify-content: center;
+}
+
+.card-container.card {
+    padding: 20px 40px;
+    text-align: center;
+}
+
+
+.column-login {
+    padding: 90px 25px;
+    font-size: 30px;
+}
+
+.column-login u {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--primary-color);
+}
+
+
+input {
+    color: black;
+}
+
+.form-control {
+    border-radius: 20px;
+    border: none;
+    height: 70px;
+    width: 100%;
+}
+.form-control, input {
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+a:hover {
+    text-decoration:none;
+    color: white;
+    cursor:pointer;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}

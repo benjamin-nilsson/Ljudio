@@ -5,6 +5,7 @@ import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
+import {Col, Row} from "antd";
 
 const required = value => {
     if (!value) {
@@ -97,11 +98,12 @@ export default class Register extends Component {
                 this.state.email,
                 this.state.password
             ).then(
-                response => {
-                    this.setState({
-                        message: response.data.message,
-                        successful: true
-                    });
+                () => {
+                    AuthService.login(this.state.username, this.state.password).then(
+                        () => {
+                            window.location.replace("/profile")
+                        }
+                    )
                 },
                 error => {
                     const resMessage =
@@ -123,12 +125,18 @@ export default class Register extends Component {
     render() {
         return (
             <div className="col-md-12">
+                <div className="col-md-12-card">
+                    <div className="column-login" align="center">
+                        <Row gutter={[24, 16]}>
+                            <Col span={12}>
+                                <a href="/login">SIGN IN</a>
+                            </Col>
+                            <Col span={12}>
+                                <u>  SIGN UP </u>
+                            </Col>
+                        </Row>
+                    </div>
                 <div className="card card-container">
-                    <img
-                        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                        alt="profile-img"
-                        className="profile-img-card"
-                    />
 
                     <Form
                         onSubmit={this.handleRegister}
@@ -139,35 +147,37 @@ export default class Register extends Component {
                         {!this.state.successful && (
                             <div>
                                 <div className="form-group">
-                                    <label htmlFor="username">Username</label>
                                     <Input
                                         type="text"
                                         className="form-control"
                                         name="username"
+                                        placeholder="username"
                                         value={this.state.username}
                                         onChange={this.onChangeUsername}
                                         validations={[required, vusername]}
                                     />
                                 </div>
+                                <br/>
 
                                 <div className="form-group">
-                                    <label htmlFor="email">Email</label>
                                     <Input
                                         type="text"
                                         className="form-control"
                                         name="email"
+                                        placeholder="email"
                                         value={this.state.email}
                                         onChange={this.onChangeEmail}
                                         validations={[required, email]}
                                     />
                                 </div>
+                                <br/>
 
                                 <div className="form-group">
-                                    <label htmlFor="password">Password</label>
                                     <Input
                                         type="password"
                                         className="form-control"
                                         name="password"
+                                        placeholder="password"
                                         value={this.state.password}
                                         onChange={this.onChangePassword}
                                         validations={[required, vpassword]}
@@ -202,6 +212,7 @@ export default class Register extends Component {
                             }}
                         />
                     </Form>
+                </div>
                 </div>
             </div>
         );

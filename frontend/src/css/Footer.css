@@ -1,0 +1,33 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: var(--footer-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 15px;
+  font-style: 32px;
+  overflow: hidden;
+}
+
+.divider {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-button {
+  color: var(--text-color);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+.footer-button:hover {
+  color: var(--text-color);
+  background: var(--btn-color-hover);
+}
