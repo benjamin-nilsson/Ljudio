@@ -26,3 +26,8 @@
   outline: none;
   width: 100%;
 }
+
+.footer-button:hover {
+  color: var(--text-color);
+  background: var(--btn-color-hover);
+}

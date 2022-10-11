@@ -5,7 +5,7 @@ import {
   PlusSquareOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
-// import playlist
+import Playlists from "./Playlists";
 
 const SelectedMediaItem = ({ id, src, title, artist }) => {
   const [isMainModel, setMainModel] = useState(false); // First Model
@@ -108,7 +108,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
           />
           <h2 style={{ color: "#fff" }}>Spelistor</h2>
         </div>
-        {/* playlist */}
+        <Playlists id={id} />
         <Button
           style={{
             background: "#A12424",

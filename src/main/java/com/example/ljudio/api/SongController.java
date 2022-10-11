@@ -38,19 +38,9 @@ public class SongController {
         songService.deleteSongById(songId);
     }
 
-    @GetMapping("/{spotifyId}")
-    public Song getSongBySpotifyId(@PathVariable("spotifyId") long spotifyId) {
-        return songService.getSongBySpotifyId(spotifyId);
-    }
-
-    @GetMapping("/{title}")
-    public Song getSongByTitle(@PathVariable("title") String title) {
-        return songService.getSongByTitle(title);
-    }
-
-    @GetMapping("/{album}")
-    public Song getSongByAlbum(@PathVariable("album") String album) {
-        return songService.getSongByAlbum(album);
+    @GetMapping("/spotify/{spotifyId}")
+    public Song getSongBySpotifyId(@PathVariable("spotifyId") String spotifyId) {
+        return songService.findBySpotifyId(spotifyId);
     }
 
 

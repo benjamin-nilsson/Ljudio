@@ -4,7 +4,7 @@
   --ljudio-color: linear-gradient(#a12424, #ff5050);
   --footer-color: linear-gradient(#ff5050, #a12424);
   --primary-color: #a12424;
-  --btn-color-hover: #a12424;
+  --btn-color-hover: #ff5050;
   --secondary-color: #626262;
   --third-color: #000;
   --text-color: #fff;
@@ -73,4 +73,16 @@ button svg {
 .view {
   margin-top: 5rem;
   min-height: 100vh;
+}
+
+.ant-modal, .ant-modal-content {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  top: 0;
+  background-color: #626262;
+  color: #f7f7f7;
+}
+.ant-modal-body {
+  height: calc(100vh - 110px);
 }
