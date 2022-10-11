@@ -1,0 +1,31 @@
+.create-playlist {
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  margin-top: 10rem;
+  overflow: auto;
+  width: 100%;
+  display: flex;
+}
+
+.create-playlist p {
+  font-size: 30px;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 16px;
+}
+
+input[type="submit"]:hover {
+  background: var(--btn-color-hover);
+}
