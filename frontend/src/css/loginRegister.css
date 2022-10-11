@@ -4,16 +4,17 @@
 
 .col-md-12-card {
     justify-content: center;
+    margin-top: 10rem;
 }
 
 .card-container.card {
-    padding: 20px 40px;
+    padding: 70px 40px;
     text-align: center;
 }
 
 
 .column-login {
-    padding: 90px 25px;
+    padding: 10px 25px;
     font-size: 30px;
 }
 

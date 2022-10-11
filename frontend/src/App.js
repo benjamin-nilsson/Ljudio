@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Link, Route, Navigate} from "react-router-dom";
 import "./App.css";
 import "./css/loginRegister.css"
 import "./css/Header.css";
@@ -14,6 +14,7 @@ import AddEmployeeComponent from "./components/AddEmployeeComponent";
 import Footer from "./components/Footer";
 
 import EventBus from "./common/EventBus";
+import Header from "./components/Header";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -44,59 +45,16 @@ const App = () => {
 
   return (
       <div>
-        <Link to={"/"} className="header"></Link>
-        <li className="nav-item">
-          <Link to={"/home"} className="nav-link">
-            Home
-          </Link>
-        </li>
-        {showAdminBoard && (
-            <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
-                Admin Board
-              </Link>
-            </li>
-        )}
-
-        {currentUser && (
-            <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
-                PLAY
-              </Link>
-            </li>
-        )}
-
-        {currentUser ? (
-            <div className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
-        ) : (
-            <div className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li>
-            </div>
-        )}
-
         <div className="container mt-3">
+          <Header/>
+          {currentUser && (
+              <Footer/>
+          )}
           <Routes>
+            <Route path="" element={<Navigate to="/login" replace />}/>
+            {currentUser && (
+                <Route path="/login" element={<Navigate to="/profile" replace />}/>
+            )}
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
