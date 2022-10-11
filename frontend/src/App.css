@@ -3,34 +3,22 @@
 :root {
   --ljudio-color: linear-gradient(#a12424, #ff5050);
   --footer-color: linear-gradient(#ff5050, #a12424);
-
   --primary-color: #a12424;
   --btn-color-hover: #a12424;
   --secondary-color: #626262;
   --third-color: #000;
   --text-color: #fff;
-}
-
-html {
-  background: var(--secondary-color);
-  min-width: 320px;
-  height: 100%;
-}
-
   overflow: hidden;
 }
 
 html,
-
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
   text-decoration: none;
   color: var(--text-color);
   background: var(--secondary-color);
-
   height: 100%;
-
 }
 
 label {
@@ -38,50 +26,33 @@ label {
   margin-top: 10px;
 }
 
-.col-md-12 {
-  display: flex;
-}
-
-.col-md-12-card {
-  justify-content: center;
-}
-
 .card-container.card {
-  padding: 50px 40px;
-  text-align: center;
+  max-width: 350px !important;
+  padding: 40px 40px;
 }
 
-
-.column-login {
-  padding: 50px 30px;
-  font-size: 30px;
-
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.column-login u {
-  text-decoration: underline;
-  text-underline-offset: 10px;
-  text-decoration-color: var(--primary-color);
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 }
-
-
-input {
-  color: black;
-}
-
-.form-control {
-  border-radius: 20px;
-  border: none;
-  height: 70px;
-  width: 100%;
-}
-.form-control, input {
-  font-size: 25px;
-  padding-left: 10px;
-}
-
-
-
 
 .app {
   background-color: var(--secondary-color);
@@ -96,41 +67,30 @@ input {
   color: #ffffff;
 }
 
-.btn {
-  width: 70%;
+button {
+  width: 100%;
   font-size: 16px;
   color: #ffffff;
-  background-color: var(--primary-color);
-  border-radius: 30px;
+  background-color: #252d4a;
+  border-radius: 15px;
+  display: flex;
   padding: 5px;
   justify-content: flex-start;
   align-items: center;
-  border: 1px hidden black;
+  border: 5px solid #234668;
   cursor: pointer;
-  height: 50px;
 }
 
 button:hover {
-  background-color: rgba(255, 0, 0, 0.3);
+  background-color: #555e7d;
 }
 
 button:focus {
   outline: none;
 }
 
-a:hover {
-  text-decoration:none;
-  color: white;
-  cursor:pointer;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-}
-
 button svg {
-  margin-right: 0px;
+  margin-right: 5px;
 }
 
 .navbar {
