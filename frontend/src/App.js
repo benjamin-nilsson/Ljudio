@@ -11,6 +11,7 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import BoardAdmin from "./components/board-admin.component";
 import AddEmployeeComponent from "./components/AddEmployeeComponent";
+import Find from "./components/search/Find";
 import Footer from "./components/Footer";
 
 import EventBus from "./common/EventBus";
@@ -98,6 +99,7 @@ const App = () => {
         <div className="container mt-3">
           <Routes>
             <Route path="/login" element={<Login/>} />
+            <Route path="/find" element={<Find/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/admin" element={<BoardAdmin/>} />
