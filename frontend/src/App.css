@@ -26,33 +26,6 @@ label {
   margin-top: 10px;
 }
 
-.card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
-}
-
-.card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-}
-
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
 
 .app {
   background-color: var(--secondary-color);
@@ -68,21 +41,21 @@ label {
 }
 
 button {
-  width: 100%;
+  width: 70%;
   font-size: 16px;
   color: #ffffff;
-  background-color: #252d4a;
-  border-radius: 15px;
-  display: flex;
+  background-color: var(--primary-color);
+  border-radius: 30px;
   padding: 5px;
   justify-content: flex-start;
   align-items: center;
-  border: 5px solid #234668;
+  border: 1px hidden black;
   cursor: pointer;
+  height: 50px
 }
 
 button:hover {
-  background-color: #555e7d;
+  background-color: rgba(255, 0, 0, 0.3);
 }
 
 button:focus {
@@ -90,7 +63,7 @@ button:focus {
 }
 
 button svg {
-  margin-right: 5px;
+  margin-right: 0;
 }
 
 .navbar {
