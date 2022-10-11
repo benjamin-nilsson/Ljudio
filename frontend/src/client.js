@@ -22,6 +22,16 @@ export const track = (songAPIId) =>
 export const album = (albumAPIId) =>
   fetch(`/api/spotify/album/${albumAPIId}`).then(checkStatus);
 
+
+export const addSong = (song) =>
+  fetch("/api/song", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(song),
+  });
+  
 export const createAPlaylist = (userId, playlistId) =>
   fetch(`/api/users/${userId}/playlist/${playlistId}/addPlaylist`, {
     headers: {

@@ -67,10 +67,6 @@ public class SongService {
         songDAO.deleteSongById(song.getSong_id());
     }
 
-    public Song getSongBySpotifyId(long spotifyId) {
-        return songDAO.findSongBySpotifyId(spotifyId).orElse(null);
-    }
-
     public Song getSongByTitle(String title) {
         return songDAO.findSongByTitle(title).orElse(null);
     }
