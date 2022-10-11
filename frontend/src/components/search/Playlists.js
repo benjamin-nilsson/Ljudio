@@ -47,11 +47,11 @@ const Playlists = ({ id }) => {
     theSong.artist_list = [];
     addSong(theSong);
 
-    for (var artistArribute in song.artist_list) {
+    for (let artistArribute in song.artist_list) {
       artist.name = song.artist_list[artistArribute].name;
     }
 
-    for (var artistArribute in song.artist_list) {
+    for (let artistArribute in song.artist_list) {
       artist.spotify_id = song.artist_list[artistArribute].spotify_id;
     }
 
