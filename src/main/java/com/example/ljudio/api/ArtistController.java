@@ -28,7 +28,7 @@ public class ArtistController {
         return artistService.addArtistToSong(artistId, id);
     }
 
-    @GetMapping("/{songId}")
+    @GetMapping("/{artistId}")
     public Artist getArtistById(@PathVariable("artistId") long artistId) {
         return artistService.getArtistByID(artistId);
     }
@@ -41,15 +41,5 @@ public class ArtistController {
     @GetMapping("/spotify/{spotifyId}")
     public Artist getArtistBySpotifyId(@PathVariable("spotifyId") String spotifyId) {
         return artistService.getArtistBySpotifyId(spotifyId);
-    }
-
-    @GetMapping("/{name}")
-    public Artist getArtistByName(@PathVariable("name") String name) {
-        return artistService.getArtistByName(name);
-    }
-
-    @GetMapping("/{albums}")
-    public List<Album> getAlbumsByArtist(@PathVariable("albums") String artistAPIId) {
-        return artistService.getAlbumsByArtist(artistAPIId);
     }
 }

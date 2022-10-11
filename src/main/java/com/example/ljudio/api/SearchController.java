@@ -1,6 +1,7 @@
 package com.example.ljudio.api;
 
 import com.example.ljudio.model.Album;
+import com.example.ljudio.model.Artist;
 import com.example.ljudio.model.Song;
 import com.example.ljudio.service.SearchService;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,11 @@ public class SearchController {
     @GetMapping("/{title}/{artist}")
     public List<Map<String, Map<String, String>>> search(@PathVariable("title") String title, @PathVariable("artist") String artist) {
         return searchService.search(title, artist);
+    }
+
+    @GetMapping("/artist/{artistId}")
+    public Artist artist(@PathVariable("artistId") String spotifyId) {
+        return searchService.artist(spotifyId);
     }
 
     @GetMapping("/{songAPIId}")

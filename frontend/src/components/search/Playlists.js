@@ -31,14 +31,14 @@ const Playlists = ({ id }) => {
 
   useEffect(() => {
     const fetchAndAddSong = async () => {
-      const respons = await fetchSong();
-      setSong(respons);
+      const song = await fetchSong();
+      setSong(song);
     };
 
     fetchAndAddSong();
   }, []);
 
-  const addTheSong = () => {
+  const addToDatabase = () => {
     theSong.spotify_id = song.spotify_id;
     console.log(song.spotify_id);
     theSong.title = song.title;
@@ -47,10 +47,16 @@ const Playlists = ({ id }) => {
     theSong.artist_list = [];
     addSong(theSong);
 
-    // artist.spotify_id = song.artist_list[1];
-    // artist.name = song.artist_list[2];
-    // console.log(song.artist_list[1].spotify_id);
-    // addArtist(artist);
+    for (var artistArribute in song.artist_list) {
+      artist.name = song.artist_list[artistArribute].name;
+    }
+
+    for (var artistArribute in song.artist_list) {
+      artist.spotify_id = song.artist_list[artistArribute].spotify_id;
+    }
+
+    console.log(song.artist_list);
+    addArtist(artist);
   };
 
   return (
@@ -77,7 +83,7 @@ const Playlists = ({ id }) => {
           </div>
         </Col>
         <Col span={2}>
-          <EllipsisOutlined onClick={() => addTheSong()} />
+          <EllipsisOutlined onClick={() => addToDatabase()} />
         </Col>
       </Row>
     </div>
