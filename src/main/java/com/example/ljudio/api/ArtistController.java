@@ -38,7 +38,7 @@ public class ArtistController {
         artistService.deleteArtistById(artistId);
     }
 
-    @GetMapping("/{spotifyId}")
+    @GetMapping("/spotify/{spotifyId}")
     public Artist getArtistBySpotifyId(@PathVariable("spotifyId") String spotifyId) {
         return artistService.getArtistBySpotifyId(spotifyId);
     }
