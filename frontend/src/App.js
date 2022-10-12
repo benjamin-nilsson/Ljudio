@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Link, Route, Navigate} from "react-router-dom";
+import {UserContext} from "./common/UserContext";
 import "./App.css";
 import "./css/loginRegister.css"
 import "./css/Header.css";
@@ -11,7 +12,7 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import BoardAdmin from "./components/board-admin.component";
 import AddEmployeeComponent from "./components/AddEmployeeComponent";
-import Find from "./components/search/Find";
+import Find from "./components/Search/Find";
 import Footer from "./components/Footer";
 
 import EventBus from "./common/EventBus";
@@ -51,6 +52,7 @@ const App = () => {
           {currentUser && (
               <Footer/>
           )}
+          <UserContext.Provider value={{currentUser, setCurrentUser}}>
           <Routes>
             <Route path="" element={<Navigate to="/login" replace />}/>
             {currentUser && (
@@ -63,6 +65,7 @@ const App = () => {
             <Route path="/admin" element={<BoardAdmin/>} />
             <Route path ="/edit-employee/:id" element={<AddEmployeeComponent/>}/>
           </Routes>
+          </UserContext.Provider>
         </div>
 
       </div>

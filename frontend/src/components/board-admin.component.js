@@ -3,10 +3,11 @@ import { Button } from 'antd';
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import EmployeeService from '../services/EmployeeService'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 
 const BoardAdmin = () => {
+    let navigate = useNavigate();
     const [content, setContent] = useState("");
     const [employees, setEmployees] = useState([])
 
@@ -51,6 +52,8 @@ const BoardAdmin = () => {
 
                 if (error.response && error.response.status === 401) {
                     EventBus.dispatch("logout");
+                    navigate("/")
+                    window.location.reload();
                 }
             }
         );
