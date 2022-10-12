@@ -59,10 +59,25 @@ export const addAlbum = (album) =>
   });
 
 export const addPlaylist = (playlist) =>
-    fetch("/api/playlist", {
-        headers: {
-            "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(playlist),
-    });
+  fetch("/api/playlist", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(playlist),
+  });
+
+export const addSongToPlaylist = (playlistId, songId) =>
+  fetch(`/api/playlist/${playlistId}/songAdd/${songId}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "PUT",
+    body: JSON.stringify(songId),
+  }).then(checkStatus);
+
+export const getUserPlaylists = (userId) =>
+  fetch(`/api/user/${userId}/playlists`).then(checkStatus);
+
+export const getUser = (userId) =>
+  fetch(`/api/user/${userId}`).then(checkStatus);

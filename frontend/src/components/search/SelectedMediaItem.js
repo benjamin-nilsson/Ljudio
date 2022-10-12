@@ -21,6 +21,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
       <button
         type="button"
         style={{
+          cursor: "pointer",
           backgroundColor: "#626262",
           padding: "0",
           border: "none",
@@ -30,6 +31,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
       >
         <MoreOutlined
           style={{
+            cursor: "pointer",
             fontSize: "16px",
             color: "#fff",
             margin: "0",
@@ -41,6 +43,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
           <ArrowLeftOutlined
             onClick={() => setMainModel(false)}
             style={{
+              cursor: "pointer",
               textAlign: "start",
               fontSize: "1.5rem",
               color: "#A12424",
@@ -70,6 +73,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
             onClick={onSubModel}
             type="button"
             style={{
+              cursor: "pointer",
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
@@ -79,6 +83,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
           >
             <PlusSquareOutlined
               style={{
+                cursor: "pointer",
                 textAlign: "start",
                 fontSize: "1.5rem",
                 color: "#A12424",
@@ -100,6 +105,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
           <ArrowLeftOutlined
             onClick={() => setSubModel(false)}
             style={{
+              cursor: "pointer",
               textAlign: "start",
               fontSize: "1.5rem",
               color: "#A12424",
@@ -111,6 +117,7 @@ const SelectedMediaItem = ({ id, src, title, artist }) => {
         <Playlists id={id} />
         <Button
           style={{
+            cursor: "pointer",
             background: "#A12424",
             width: "8rem",
             color: "#fff",

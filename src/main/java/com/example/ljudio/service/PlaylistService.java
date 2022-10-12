@@ -19,6 +19,7 @@ public class PlaylistService {
     private PlaylistDAO playlistDAO;
     private SongDAO songDAO;
     private UserDAO userDAO;
+    private SongService songService;
 
     public Iterable<Playlist> getAllPlaylist() {
         return playlistDAO.getAllPlaylist();
@@ -91,9 +92,9 @@ public class PlaylistService {
         return playlistDAO.addPlaylist(playlist);
     }
 
-    public Playlist addSongToPlayList(Long playlistId, long songId){
+    public Playlist addSongToPlayList(Long playlistId, String songId){
 
-        Song song = songDAO.findSongById(songId).get();
+        Song song = songService.findBySpotifyId(songId);
         List<Song> playlistSongs = getSongsFromPlaylist(playlistId);
         Playlist playlist = getPlaylistById(playlistId);
 

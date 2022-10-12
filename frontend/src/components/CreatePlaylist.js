@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./../css/CreatePlaylist.css";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -7,7 +7,7 @@ import EventBus from "../common/EventBus";
 import { useNavigate } from "react-router";
 import { addPlaylistToUser, addPlaylist } from "./../client";
 import { Input, Col, Form, Row, Button } from "antd";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CreatePlaylist = () => {
   const [content, setContent] = useState("");
@@ -18,8 +18,8 @@ const CreatePlaylist = () => {
   const [loading, setLoading] = useState(false);
 
   const newPlaylist = {
-    name: ""
-  }
+    name: "",
+  };
 
   useEffect(() => {
     UserService.getUserBoard().then(
@@ -57,30 +57,38 @@ const CreatePlaylist = () => {
     console.log(playlist);
     newPlaylist.name = playlistName;
     console.log(newPlaylist.name);
-    addPlaylist(newPlaylist).then(resp => resp).then(res => res.json()).then(data => setPlaylist(data));
-    console.log(playlist);
-    setLoading(false);
+    let createdPlaylist = addPlaylist(newPlaylist);
+    addPlaylistToUser(1, createdPlaylist.id);
+    console.log(createdPlaylist.id);
+    setPlaylist(createdPlaylist);
   };
 
   const renderForm = (
-      <div>
-        <form onSubmit={onFinish}>
-          <div>
-            <label>Name your playlist</label>
-            <input onChange={e => {setPlaylistName(e.target.value)}} type="text" name="name" required />
-          </div>
-          <input type="submit" value="Playlist Name" />
-        </form>
-      </div>
+    <div>
+      <form onSubmit={onFinish}>
+        <div>
+          <label>Name your playlist</label>
+          <input
+            onChange={(e) => {
+              setPlaylistName(e.target.value);
+            }}
+            type="text"
+            name="name"
+            required
+          />
+        </div>
+        <input type="submit" value="Playlist Name" />
+      </form>
+    </div>
   );
 
   return (
-      <div className="create-playlist">
-        <div >
-          <div>Create Playlist</div>
-          <div>{isSubmitted ? navigate("/playlist") : renderForm}</div>
-        </div>
+    <div className="create-playlist">
+      <div>
+        <div>Create Playlist</div>
+        <div>{isSubmitted ? navigate("/playlist") : renderForm}</div>
       </div>
+    </div>
   );
 };
 
