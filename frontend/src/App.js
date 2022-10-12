@@ -11,11 +11,13 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import BoardAdmin from "./components/board-admin.component";
 import AddEmployeeComponent from "./components/AddEmployeeComponent";
-import Find from "./components/search/Find";
+import Find from "./components/Search/Find";
 import Footer from "./components/Footer";
+import Playback from "./components/Playback";
 
 import EventBus from "./common/EventBus";
 import Header from "./components/Header";
+
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -48,14 +50,15 @@ const App = () => {
       <div>
         <div className="container mt-3">
           <Header/>
-          {currentUser && (
-              <Footer/>
-          )}
+          {Location.pathname !== '/playback' &&
+              <Footer />
+          }
           <Routes>
             <Route path="" element={<Navigate to="/login" replace />}/>
             {currentUser && (
                 <Route path="/login" element={<Navigate to="/profile" replace />}/>
             )}
+            <Route path="playback" element={<Playback/>}/>
             <Route path="/login" element={<Login/>} />
             <Route path="/find" element={<Find/>} />
             <Route path="/register" element={<Register/>} />
