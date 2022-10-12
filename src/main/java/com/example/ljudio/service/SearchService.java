@@ -22,7 +22,7 @@ public class SearchService {
     private SongService songService;
     private ArtistService artistService;
     private AlbumService albumService;
-    private String token = "BQCmvvxuo2QRw43VV4p5Ia1jpUEPIkg6oGZhm6nPEWxw7r2ovRRli6g9p5Co8n7si7gtEuvCZ7-3zTTCMl3shpEEqCqu9RfgbT-Ya7sN2JYHFG-HvOh5Yukgu3T3lKMHQnox2_NMAYfVXi1q6dsFtVgewf6-jJ3cEgHduadynSquNMv9PueufBA";
+    private String token = "BQDj32mUUbeV4Xubg4AVWu-MNr5HNAaWlkdYvaP241pJlZpBJ10IiHN-2LTM9Y_1tXe3pEf9OFB_yGK6Kp55ZGR9T3pqM6t7n2Y0Kh3QU8OiL87Jd4jD-Nt4F_7wJYxj77nxJwZqsTQS7gStI635mG2K7UnEENaxdDZafUcPJFW3zCdN52IzmYQ";
     public SearchService(SongService songService, ArtistService artistService, AlbumService albumService) {
         this.songService = songService;
         this.artistService = artistService;
@@ -165,7 +165,7 @@ public class SearchService {
 
             String releaseDate = songItem.getString("release_date");
             String albumId = songItem.getString("id");
-            String title = songItem.getString("name");
+            String title = song.getString("name");
 
             return new Song(spotifyId, title, albumId, releaseDate, new ArrayList<>(List.of(maybeArtist)));
 

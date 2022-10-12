@@ -27,7 +27,7 @@ public class Artist {
     private String name;
 
     @Column
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany
     @JsonIgnore
     private List<Album> album_list;
 
