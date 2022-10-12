@@ -22,7 +22,7 @@ public class SearchService {
     private SongService songService;
     private ArtistService artistService;
     private AlbumService albumService;
-    private String token = "BQCW6Ndqnf6-AEbsf8bFw8K0dJNIzMEXy_MB_khzsfjkkE0gM-yAyBuWhiEM3O3O9uQk5lLN-SnTMjFMmnluSOPC-IPfCHCu_JuIaR1ZCGIK2-cNVyXfZyiOgYI8yTZSWWWDmZaAvLXvPIz8iY6WSE6nXYPZyFGptmJTQSXmY-Yc5zEhCchxTKw";
+    private String token = "BQCmvvxuo2QRw43VV4p5Ia1jpUEPIkg6oGZhm6nPEWxw7r2ovRRli6g9p5Co8n7si7gtEuvCZ7-3zTTCMl3shpEEqCqu9RfgbT-Ya7sN2JYHFG-HvOh5Yukgu3T3lKMHQnox2_NMAYfVXi1q6dsFtVgewf6-jJ3cEgHduadynSquNMv9PueufBA";
     public SearchService(SongService songService, ArtistService artistService, AlbumService albumService) {
         this.songService = songService;
         this.artistService = artistService;
