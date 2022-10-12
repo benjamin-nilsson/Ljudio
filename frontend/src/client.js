@@ -60,3 +60,12 @@ export const addAlbum = (album) =>
     method: "POST",
     body: JSON.stringify(album),
   });
+  
+export const addPlaylist = (playlist) =>
+    fetch("/api/playlist", {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(playlist),
+    });
