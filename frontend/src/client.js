@@ -49,6 +49,15 @@ export const addPlaylistToUser = (userId, playlistId) =>
     body: JSON.stringify(userId),
   }).then(checkStatus);
 
+export const addAlbum = (album) =>
+  fetch("/api/album", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(album),
+  });
+
 export const addPlaylist = (playlist) =>
     fetch("/api/playlist", {
         headers: {
