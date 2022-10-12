@@ -29,6 +29,7 @@ public class PlaylistService {
     }
 
     public List<Playlist> addPlaylistToUser(long playlistId, long userId) {
+        System.out.println("Hello");
         Optional<Playlist> maybePlaylist = playlistDAO.getPlaylistById(playlistId);
         Optional<User> maybeUser = userDAO.findByID(userId);
 
@@ -42,6 +43,8 @@ public class PlaylistService {
         userPlaylist.add(playlist);
 
         user.setPlaylist(userPlaylist);
+        playlist.setUsers(user);
+        playlistDAO.addPlaylist(playlist);
         return userDAO.save(user).getPlaylist();
     }
 

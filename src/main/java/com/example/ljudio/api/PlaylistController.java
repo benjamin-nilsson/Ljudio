@@ -1,7 +1,6 @@
 package com.example.ljudio.api;
 
 import com.example.ljudio.model.Playlist;
-import com.example.ljudio.model.User;
 import com.example.ljudio.service.PlaylistService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:8080/")
 @RequestMapping("/api/playlist")
 public class PlaylistController {
 
@@ -25,11 +23,13 @@ public class PlaylistController {
 
     @PostMapping
     public Playlist addPlaylist(@RequestBody Playlist playlist) {
+        System.out.println("hej");
         return playlistService.addPlaylist(playlist);
     }
 
     @PutMapping("/{id}/user/{userId}")
     public List<Playlist> addPlaylistToUser(@PathVariable("id") long id, @PathVariable("userId") long userId) {
+        System.out.println("bye");
         return playlistService.addPlaylistToUser(id, userId);
     }
 

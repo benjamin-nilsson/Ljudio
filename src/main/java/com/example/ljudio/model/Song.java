@@ -35,7 +35,7 @@ public class Song {
     private String releaseDate;
 
     @Column
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Artist> artist_list;
 
     public Song(String spotify_id, String title, String albumId, String releaseDate, List<Artist> artist_list) {

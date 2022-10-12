@@ -22,7 +22,6 @@ export const track = (songAPIId) =>
 export const album = (albumAPIId) =>
   fetch(`/api/spotify/album/${albumAPIId}`).then(checkStatus);
 
-
 export const addSong = (song) =>
   fetch("/api/song", {
     headers: {
@@ -31,12 +30,39 @@ export const addSong = (song) =>
     method: "POST",
     body: JSON.stringify(song),
   });
-  
-export const createAPlaylist = (userId, playlistId) =>
-  fetch(`/api/users/${userId}/playlist/${playlistId}/addPlaylistToUser`, {
+
+export const addArtist = (artist) =>
+  fetch("/api/artist", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(artist),
+  });
+
+export const addPlaylistToUser = (userId, playlistId) =>
+  fetch(`/api/playlist/${playlistId}/user/${userId}`, {
     headers: {
       "Content-Type": "application/json",
     },
     method: "PUT",
     body: JSON.stringify(userId),
   }).then(checkStatus);
+
+export const addAlbum = (album) =>
+  fetch("/api/album", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(album),
+  });
+
+export const addPlaylist = (playlist) =>
+    fetch("/api/playlist", {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(playlist),
+    });
