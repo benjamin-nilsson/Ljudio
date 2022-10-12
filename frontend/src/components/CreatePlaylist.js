@@ -1,16 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useRef} from "react";
 import "./../css/CreatePlaylist.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { useNavigate } from "react-router";
-import { createAPlaylist, addPlaylist } from "./../client";
+import { addPlaylistToUser, addPlaylist } from "./../client";
 import { Input, Col, Form, Row, Button } from "antd";
+import {Link} from "react-router-dom";
 
 const CreatePlaylist = () => {
   const [content, setContent] = useState("");
   const [playlist, setPlaylist] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [playlistName, setPlaylistName] = useState("");
+  const isFirstRender = useRef(true);
+  const [loading, setLoading] = useState(false);
+
+  const newPlaylist = {
+    name: ""
+  }
 
   useEffect(() => {
     UserService.getUserBoard().then(
@@ -36,54 +45,53 @@ const CreatePlaylist = () => {
 
   const navigate = useNavigate();
 
-  const addPlaylistToUser = () => {
-    createAPlaylist(1, playlist.id);
+  /*useEffect( () => {
+if (loading){
+  const fetchPlaylistToUser = () => {
+    console.log("hello")
+    addPlaylistToUser(1, playlist.id);
   };
+  fetchPlaylistToUser();
+}
+  }, [loading]);*/
 
-  const onFinish = (playlist) => {
+  useEffect(() => {
+    const fetchPlaylistToUser = async () => {
+      await addPlaylistToUser(1, playlist.id);
+      console.log("hello");
+      setPlaylist({});
+    };
+    fetchPlaylistToUser();
+  }, [playlist]);
+
+  const onFinish = () => {
     console.log(playlist);
-    let createdPlaylist = addPlaylist(playlist);
-    setPlaylist(createdPlaylist);
+    newPlaylist.name = playlistName;
+    console.log(newPlaylist.name);
+    addPlaylist(newPlaylist).then(resp => resp).then(res => res.json()).then(data => setPlaylist(data));
     console.log(playlist);
-    addPlaylistToUser();
-    navigate("/playlist");
+    setLoading(false);
   };
 
-
-  const onFinishFailed = (errorInfo) => {
-    alert(JSON.stringify(errorInfo, null, 2));
-  };
+  const renderForm = (
+      <div>
+        <form onSubmit={onFinish}>
+          <div>
+            <label>Name your playlist</label>
+            <input onChange={e => {setPlaylistName(e.target.value)}} type="text" name="name" required />
+          </div>
+          <input type="submit" value="Playlist Name" />
+        </form>
+      </div>
+  );
 
   return (
-    <div className="create-playlist">
-      <Header />
-      <div className="create">
-        <p>Name your playlist</p>
-        <Form
-          layout="vertical"
-          onFinishFailed={onFinishFailed}
-          onFinish={onFinish}
-          hideRequiredMark
-        >
-          <Row gutter={16}>
-            <Col span={24}>
-              <Form.Item
-                  name="name"
-                  label="name"
-                rules={[{ required: true, message: "Name your playlist." }]}
-              >
-                <Input />
-                <Form.Item>
-                  <input type="submit" value="Create Playlist" />
-                  <div className="button-playlist"></div>
-                </Form.Item>
-              </Form.Item>
-            </Col>
-          </Row>
-        </Form>
+      <div className="create-playlist">
+        <div >
+          <div>Create Playlist</div>
+          <div>{isSubmitted ? navigate("/playlist") : renderForm}</div>
+        </div>
       </div>
-      <Footer />
-    </div>
   );
 };
 

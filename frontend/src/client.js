@@ -40,8 +40,8 @@ export const addArtist = (artist) =>
     body: JSON.stringify(artist),
   });
 
-export const createAPlaylist = (userId, playlistId) =>
-  fetch(`/api/users/${userId}/playlist/${playlistId}/addPlaylistToUser`, {
+export const addPlaylistToUser = (userId, playlistId) =>
+  fetch(`/api/playlist/${playlistId}/user/${userId}`, {
     headers: {
       "Content-Type": "application/json",
     },

@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 
 import EventBus from "./common/EventBus";
 import Header from "./components/Header";
+import CreatePlaylist from "./components/CreatePlaylist";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -61,6 +62,7 @@ const App = () => {
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/admin" element={<BoardAdmin/>} />
+            <Route path="/create" element={<CreatePlaylist/>} />
             <Route path ="/edit-employee/:id" element={<AddEmployeeComponent/>}/>
           </Routes>
         </div>
