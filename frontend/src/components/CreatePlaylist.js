@@ -5,12 +5,12 @@ import Footer from "./Footer";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { useNavigate } from "react-router";
-import { createAPlaylist } from "./../client";
-import { RightOutlined, PlusOutlined } from "@ant-design/icons";
+import { createAPlaylist, addPlaylist } from "./../client";
 import { Input, Col, Form, Row, Button } from "antd";
 
 const CreatePlaylist = () => {
   const [content, setContent] = useState("");
+  const [playlist, setPlaylist] = useState({});
 
   useEffect(() => {
     UserService.getUserBoard().then(
@@ -36,10 +36,19 @@ const CreatePlaylist = () => {
 
   const navigate = useNavigate();
 
-  const onFinish = (userId, playlistId) => {
-    createAPlaylist(userId, playlistId);
+  const addPlaylistToUser = () => {
+    createAPlaylist(1, playlist.id);
+  };
+
+  const onFinish = (playlist) => {
+    console.log(playlist);
+    let createdPlaylist = addPlaylist(playlist);
+    setPlaylist(createdPlaylist);
+    console.log(playlist);
+    addPlaylistToUser();
     navigate("/playlist");
   };
+
 
   const onFinishFailed = (errorInfo) => {
     alert(JSON.stringify(errorInfo, null, 2));
@@ -59,6 +68,8 @@ const CreatePlaylist = () => {
           <Row gutter={16}>
             <Col span={24}>
               <Form.Item
+                  name="name"
+                  label="name"
                 rules={[{ required: true, message: "Name your playlist." }]}
               >
                 <Input />
