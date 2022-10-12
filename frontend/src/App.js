@@ -12,7 +12,7 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import BoardAdmin from "./components/board-admin.component";
 import AddEmployeeComponent from "./components/AddEmployeeComponent";
-import Find from "./components/Search/Find";
+import Find from "./components/search/Find";
 import Footer from "./components/Footer";
 
 import EventBus from "./common/EventBus";
@@ -59,6 +59,9 @@ const App = () => {
             {currentUser && (
                 <Route path="/login" element={<Navigate to="/profile" replace />}/>
             )}
+            {currentUser && (
+                <Route path="/register" element={<Navigate to="/profile" replace />} />
+                )}
             <Route path="/login" element={<Login/>} />
             <Route path="/find" element={<Find/>} />
             <Route path="/register" element={<Register/>} />
