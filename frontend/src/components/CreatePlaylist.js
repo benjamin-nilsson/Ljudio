@@ -45,21 +45,10 @@ const CreatePlaylist = () => {
 
   const navigate = useNavigate();
 
-  /*useEffect( () => {
-if (loading){
-  const fetchPlaylistToUser = () => {
-    console.log("hello")
-    addPlaylistToUser(1, playlist.id);
-  };
-  fetchPlaylistToUser();
-}
-  }, [loading]);*/
-
   useEffect(() => {
-    const fetchPlaylistToUser = async () => {
-      await addPlaylistToUser(1, playlist.id);
+    const fetchPlaylistToUser = () => {
+      addPlaylistToUser(1, 1);
       console.log("hello");
-      setPlaylist({});
     };
     fetchPlaylistToUser();
   }, [playlist]);
