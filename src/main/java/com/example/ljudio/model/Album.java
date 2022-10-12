@@ -32,7 +32,7 @@ public class Album {
     @Column
     private String albumImage;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Artist artist;
 
     @Column

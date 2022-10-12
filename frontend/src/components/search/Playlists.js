@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Col, Row } from "antd";
 import { EllipsisOutlined } from "@ant-design/icons";
-import { track, album, addSong, addArtist } from "../../client"; //need all users playlists
+import { track, addSong, addArtist, album, addAlbum } from "../../client"; //need all users playlists
 
 const Playlists = ({ id }) => {
   const [song, setSong] = useState({});
+  const [theAlbum, setTheAlbum] = useState({});
+  const isFirstRender = useRef(true);
 
-  const theSong = {
+  const newSong = {
     song_id: 0,
     spotify_id: "",
     title: "",
@@ -15,11 +17,21 @@ const Playlists = ({ id }) => {
     artist_list: [],
   };
 
-  const artist = {
+  const newArtist = {
     artist_id: 0,
     spotify_id: "",
     name: "",
     album_list: [],
+  };
+
+  const newAlbum = {
+    album_id: 0,
+    spotify_id: "",
+    name: "",
+    songs: 1,
+    albumImage: "",
+    artist: [],
+    songs_list: [],
   };
 
   const fetchSong = async () => {
@@ -29,34 +41,65 @@ const Playlists = ({ id }) => {
     return data;
   };
 
+  const fetchAlbum = async () => {
+    const res = await album("4uIhRJj1Au4TiyHhCOZys5");
+    const data = await res.json();
+
+    return data;
+  };
+
   useEffect(() => {
-    const fetchAndAddSong = async () => {
+    const getSong = async () => {
       const song = await fetchSong();
       setSong(song);
     };
 
-    fetchAndAddSong();
+    getSong();
   }, []);
 
+  useEffect(() => {
+    if (isFirstRender.current === true) {
+      isFirstRender.current = false;
+    } else {
+      const getAlbum = async () => {
+        const album = await fetchAlbum();
+        setTheAlbum(album);
+        console.log(album);
+      };
+
+      getAlbum();
+    }
+  }, [song]);
+
   const addToDatabase = () => {
-    theSong.spotify_id = song.spotify_id;
+    newSong.spotify_id = song.spotify_id;
     console.log(song.spotify_id);
-    theSong.title = song.title;
-    theSong.albumId = song.albumId;
-    theSong.releaseDate = song.releaseDate;
-    theSong.artist_list = [];
-    addSong(theSong);
+    newSong.title = song.title;
+    newSong.albumId = song.albumId;
+    newSong.releaseDate = song.releaseDate;
+    newSong.artist_list = [];
+    addSong(song);
 
     for (let artistArribute in song.artist_list) {
-      artist.name = song.artist_list[artistArribute].name;
+      newArtist.name = song.artist_list[artistArribute].name;
     }
 
     for (let artistArribute in song.artist_list) {
-      artist.spotify_id = song.artist_list[artistArribute].spotify_id;
+      newArtist.spotify_id = song.artist_list[artistArribute].spotify_id;
     }
 
-    console.log(song.artist_list);
-    addArtist(artist);
+    newAlbum.album_id = 0;
+    newAlbum.spotify_id = theAlbum.spotify_id;
+    newAlbum.name = theAlbum.name;
+    newAlbum.songs = theAlbum.songs;
+    console.log(theAlbum.songs);
+    newAlbum.albumImage = theAlbum.albumImage;
+    // console.log(theAlbum.artist[0].artist_id);
+
+    console.log(newAlbum);
+    console.log(newSong);
+
+    addAlbum(theAlbum);
   };
 
   return (

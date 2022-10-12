@@ -30,8 +30,8 @@ public class AlbumController {
         albumService.deleteAlbumById(albumId);
     }
 
-    @GetMapping("/{artist}")
-    public Album getArtistByAlbum(@PathVariable("artist") String artist) {
-        return albumService.getArtistByAlbum(artist);
+    @GetMapping("spotify/{albumApiId}")
+    public Album getAlbumByApiId(@PathVariable("albumApiId") String albumApiId) {
+        return albumService.findBySpotifyId(albumApiId);
     }
 }
