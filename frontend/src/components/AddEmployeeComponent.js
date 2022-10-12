@@ -16,7 +16,7 @@ const AddEmployeeComponent = () => {
 
         if(id){
             EmployeeService.updateEmployee(id, employee).then((response) => {
-                navigate.push('/clients')
+                navigate.push('/user')
             }).catch(error => {
                 console.log(error)
             })
@@ -26,7 +26,7 @@ const AddEmployeeComponent = () => {
 
                 console.log(response.data)
 
-                navigate.push('/clients');
+                navigate.push('/user');
 
             }).catch(error => {
                 console.log(error)

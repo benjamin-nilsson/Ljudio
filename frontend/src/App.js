@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Link, Route, Navigate} from "react-router-dom";
+import {UserContext} from "./common/UserContext";
 import "./App.css";
 import "./css/loginRegister.css"
 import "./css/Header.css";
@@ -11,13 +12,12 @@ import Register from "./components/register.component";
 import Profile from "./components/profile.component";
 import BoardAdmin from "./components/board-admin.component";
 import AddEmployeeComponent from "./components/AddEmployeeComponent";
-import Find from "./components/Search/Find";
+import Find from "./components/search/Find";
 import Footer from "./components/Footer";
-import Playback from "./components/Playback";
 
 import EventBus from "./common/EventBus";
 import Header from "./components/Header";
-
+import CreatePlaylist from "./components/CreatePlaylist";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -50,22 +50,27 @@ const App = () => {
       <div>
         <div className="container mt-3">
           <Header/>
-          {Location.pathname !== '/playback' &&
-              <Footer />
-          }
+          {currentUser && (
+              <Footer/>
+          )}
+          <UserContext.Provider value={{currentUser, setCurrentUser}}>
           <Routes>
             <Route path="" element={<Navigate to="/login" replace />}/>
             {currentUser && (
                 <Route path="/login" element={<Navigate to="/profile" replace />}/>
             )}
-            <Route path="playback" element={<Playback/>}/>
+            {currentUser && (
+                <Route path="/register" element={<Navigate to="/profile" replace />} />
+                )}
             <Route path="/login" element={<Login/>} />
             <Route path="/find" element={<Find/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />
             <Route path="/admin" element={<BoardAdmin/>} />
+            <Route path="/create" element={<CreatePlaylist/>} />
             <Route path ="/edit-employee/:id" element={<AddEmployeeComponent/>}/>
           </Routes>
+          </UserContext.Provider>
         </div>
 
       </div>

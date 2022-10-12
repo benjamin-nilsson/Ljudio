@@ -8,6 +8,10 @@ class EmployeeService{
         return axios.get(EMPLOYEE_BASE_REST_API_URL)
     }
 
+    getUserPlaylist(userId){
+        return axios.get(EMPLOYEE_BASE_REST_API_URL + '/' + userId + '/playlists'  )
+    }
+
     createEmployee(user){
         return axios.post(EMPLOYEE_BASE_REST_API_URL, user)
     }
