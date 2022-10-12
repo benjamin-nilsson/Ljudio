@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Link, Route, Navigate} from "react-router-dom";
+import {UserContext} from "./common/UserContext";
 import "./App.css";
 import "./css/loginRegister.css"
 import "./css/Header.css";
@@ -17,6 +18,7 @@ import Footer from "./components/Footer";
 import EventBus from "./common/EventBus";
 import Header from "./components/Header";
 import CreatePlaylist from "./components/CreatePlaylist";
+import Playback from "./components/Playback";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -52,11 +54,16 @@ const App = () => {
           {currentUser && (
               <Footer/>
           )}
+          <UserContext.Provider value={{currentUser, setCurrentUser}}>
           <Routes>
             <Route path="" element={<Navigate to="/login" replace />}/>
             {currentUser && (
                 <Route path="/login" element={<Navigate to="/profile" replace />}/>
             )}
+            {currentUser && (
+                <Route path="/register" element={<Navigate to="/profile" replace />} />
+                )}
+            <Route path="/playback" element={<Playback/>}/>
             <Route path="/login" element={<Login/>} />
             <Route path="/find" element={<Find/>} />
             <Route path="/register" element={<Register/>} />
@@ -65,6 +72,7 @@ const App = () => {
             <Route path="/create" element={<CreatePlaylist/>} />
             <Route path ="/edit-employee/:id" element={<AddEmployeeComponent/>}/>
           </Routes>
+          </UserContext.Provider>
         </div>
 
       </div>

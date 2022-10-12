@@ -6,8 +6,13 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
+import {useLocation} from "react-router-dom";
 
 const Footer = () => {
+  const { pathname } = useLocation();
+
+  if (pathname === "/playback") return null;
+
   return (
     <div className="footer">
       <div className="divider">
