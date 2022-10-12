@@ -30,3 +30,12 @@ export const createAPlaylist = (userId, playlistId) =>
     method: "PUT",
     body: JSON.stringify(userId),
   }).then(checkStatus);
+
+export const addPlaylist = (playlist) =>
+    fetch("/api/playlist", {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(playlist),
+    });
