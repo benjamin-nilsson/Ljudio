@@ -12,6 +12,11 @@
   font-size: 30px;
 }
 
+.create-label {
+  font-size: 30px;
+  padding: 10px;
+}
+
 input[type="submit"] {
   margin-top: 20px;
   cursor: pointer;
