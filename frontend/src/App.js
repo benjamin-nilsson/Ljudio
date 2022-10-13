@@ -19,6 +19,7 @@ import EventBus from "./common/EventBus";
 import Header from "./components/Header";
 import CreatePlaylist from "./components/CreatePlaylist";
 import Playback from "./components/Playback";
+import Playlist from "./components/Playlist";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -58,13 +59,14 @@ const App = () => {
           <Routes>
             <Route path="" element={<Navigate to="/login" replace />}/>
             {currentUser && (
-                <Route path="/login" element={<Navigate to="/profile" replace />}/>
+                <Route path="/login" element={<Navigate to="/playlist-user" replace />}/>
             )}
             {currentUser && (
-                <Route path="/register" element={<Navigate to="/profile" replace />} />
+                <Route path="/register" element={<Navigate to="/playlist-user" replace />} />
                 )}
             <Route path="/playback" element={<Playback/>}/>
-            <Route path="/login" element={<Login/>} />
+            <Route path="/playlist-user" element={<Playlist/>}/>
+            <Route path="/login" element={<Login/>}/>
             <Route path="/find" element={<Find/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/profile" element={<Profile/>} />

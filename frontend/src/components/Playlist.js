@@ -46,11 +46,12 @@ const Home = () => {
     <div className="playlist-home">
       <Header />
       <div className="profile-image">
-        <img
+        <a href="/profile"><img
           src={
             "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
           }
-        />
+
+        /></a>
       </div>
       <div className="profile-user">
         <p>{user.username}</p>

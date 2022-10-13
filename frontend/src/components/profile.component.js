@@ -19,6 +19,7 @@ const Profile = () => {
                     <div className="col-md-12-card">
                         <div className="card card-container">
                         <div className="profile-card form-control">
+                            <div className="profile">
                         <header className="jumbotron">
                     <h3>
                         <strong>{user.username}</strong> Profile <UserOutlined />
@@ -31,6 +32,7 @@ const Profile = () => {
                 <a href="/login" className="nav-link" onClick={logOut}>
                     LogOut
                 </a></button></div>
+                    </div>
                     </div>
                     </div>
                     </div>

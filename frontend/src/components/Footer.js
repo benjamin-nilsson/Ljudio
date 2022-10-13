@@ -19,7 +19,7 @@ const Footer = () => {
         <Button
           className="footer-button"
           type="home"
-          href="/user-playlists"
+          href="/playlist-user"
           icon={<HomeOutlined style={{ fontSize: "175%" }} />}
         />
         <Button
@@ -31,7 +31,7 @@ const Footer = () => {
         <Button
           className="footer-button"
           type="user-playlists"
-          href="/user-playlists"
+          href="/playlist-user"
           icon={<MenuUnfoldOutlined style={{ fontSize: "175%" }} />}
         />
       </div>
