@@ -81,3 +81,6 @@ export const getUserPlaylists = (userId) =>
 
 export const getUser = (userId) =>
   fetch(`/api/user/${userId}`).then(checkStatus);
+
+export const getPlaylist = (playlistId) =>
+  fetch(`/api/playlist/${playlistId}/songs`).then(checkStatus);

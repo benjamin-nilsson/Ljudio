@@ -1,6 +1,7 @@
 package com.example.ljudio.api;
 
 import com.example.ljudio.model.Playlist;
+import com.example.ljudio.model.Song;
 import com.example.ljudio.service.PlaylistService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class PlaylistController {
     @GetMapping("/{id}")
     public Playlist getPlaylistById(@PathVariable("id") Long id) {
         return playlistService.getPlaylistById(id);
+    }
+
+    @GetMapping("/{id}/songs")
+    public List<Song> getPlaylistSongs(@PathVariable("id") Long id) {
+        return playlistService.getPlaylistSongs(id);
     }
 
     @PutMapping("/{id}/songAdd/{songId}")

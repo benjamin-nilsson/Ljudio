@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import {BrowserRouter as Router, Routes, Link, Route, Navigate} from "react-router-dom";
-import {UserContext} from "./common/UserContext";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Link,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { UserContext } from "./common/UserContext";
 import "./App.css";
-import "./css/loginRegister.css"
+import "./css/loginRegister.css";
 import "./css/Header.css";
 
 import AuthService from "./services/auth.service";
@@ -18,8 +24,7 @@ import Footer from "./components/Footer";
 import EventBus from "./common/EventBus";
 import Header from "./components/Header";
 import CreatePlaylist from "./components/CreatePlaylist";
-import Playback from "./components/Playback";
-import Playlist from "./components/UsersPlaylists";
+import Playlist from "./components/Playlist";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -49,35 +54,40 @@ const App = () => {
   };
 
   return (
-      <div>
-        <div className="container mt-3">
-          <Header/>
-          {currentUser && (
-              <Footer/>
-          )}
-          <UserContext.Provider value={{currentUser, setCurrentUser}}>
+    <div>
+      <div className="container mt-3">
+        <Header />
+        {currentUser && <Footer />}
+        <UserContext.Provider value={{ currentUser, setCurrentUser }}>
           <Routes>
-            <Route path="" element={<Navigate to="/login" replace />}/>
+            <Route path="" element={<Navigate to="/login" replace />} />
             {currentUser && (
-                <Route path="/login" element={<Navigate to="/playlist-user" replace />}/>
+              <Route
+                path="/login"
+                element={<Navigate to="/playlist-user" replace />}
+              />
             )}
             {currentUser && (
-                <Route path="/register" element={<Navigate to="/playlist-user" replace />} />
-                )}
-            <Route path="/playback" element={<Playback/>}/>
-            <Route path="/playlist-user" element={<Playlist/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/find" element={<Find/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/admin" element={<BoardAdmin/>} />
-            <Route path="/create" element={<CreatePlaylist/>} />
-            <Route path ="/edit-employee/:id" element={<AddEmployeeComponent/>}/>
+              <Route
+                path="/register"
+                element={<Navigate to="/playlist-user" replace />}
+              />
+            )}
+            <Route path="/playlist" element={<Playlist />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/find" element={<Find />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<BoardAdmin />} />
+            <Route path="/create" element={<CreatePlaylist />} />
+            <Route
+              path="/edit-employee/:id"
+              element={<AddEmployeeComponent />}
+            />
           </Routes>
-          </UserContext.Provider>
-        </div>
-
+        </UserContext.Provider>
       </div>
+    </div>
   );
 };
 
