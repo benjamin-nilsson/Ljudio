@@ -22,7 +22,7 @@ public class SearchService {
     private SongService songService;
     private ArtistService artistService;
     private AlbumService albumService;
-    private String token = "BQDj32mUUbeV4Xubg4AVWu-MNr5HNAaWlkdYvaP241pJlZpBJ10IiHN-2LTM9Y_1tXe3pEf9OFB_yGK6Kp55ZGR9T3pqM6t7n2Y0Kh3QU8OiL87Jd4jD-Nt4F_7wJYxj77nxJwZqsTQS7gStI635mG2K7UnEENaxdDZafUcPJFW3zCdN52IzmYQ";
+    private String token = "BQDw9fZhSWGzwZiRb41OylGodLvcmP_aqpt6iHtTNkNmHtSGVNpqG_qRXFcyM6wggDeouOqasMxqT5yhzFs58MR_8Oiols9EOm20_F-18b6s1XvxKzsNaidm2B1xajJxrHEsmf9AoB4EvL24-uqO-tE584TxVwRGJ1YXY0grw4lShKYApG4tSfg";
     public SearchService(SongService songService, ArtistService artistService, AlbumService albumService) {
         this.songService = songService;
         this.artistService = artistService;
@@ -165,9 +165,10 @@ public class SearchService {
 
             String releaseDate = songItem.getString("release_date");
             String albumId = songItem.getString("id");
+            String albumImage = songItem.getJSONArray("images").getJSONObject(firstObject).getString("url");
             String title = song.getString("name");
 
-            return new Song(spotifyId, title, albumId, releaseDate, new ArrayList<>(List.of(maybeArtist)));
+            return new Song(spotifyId, title, albumId, albumImage, releaseDate, new ArrayList<>(List.of(maybeArtist)));
 
         } catch (JSONException e) {
             e.printStackTrace();

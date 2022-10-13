@@ -32,16 +32,20 @@ public class Song {
     private String albumId;
 
     @Column
+    private String albumImage;
+
+    @Column
     private String releaseDate;
 
     @Column
     @ManyToMany(cascade = {CascadeType.ALL})
     private List<Artist> artist_list;
 
-    public Song(String spotify_id, String title, String albumId, String releaseDate, List<Artist> artist_list) {
+    public Song(String spotify_id, String title, String albumId, String albumImage, String releaseDate, List<Artist> artist_list) {
         this.spotify_id = spotify_id;
         this.title = title;
         this.albumId = albumId;
+        this.albumImage = albumImage;
         this.releaseDate = releaseDate;
         this.artist_list = artist_list;
     }

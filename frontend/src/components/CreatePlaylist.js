@@ -92,4 +92,16 @@ const CreatePlaylist = () => {
   );
 };
 
+{
+  /* <div className="create-playlist">
+      <div>
+        <div>Create Playlist</div>
+        <div>
+          <input type="text" onChange={e => setName(e.target.value) }/>
+          <button onClick={onFinish}>add</button>
+        </div>
+      </div>
+    </div> */
+}
+
 export default CreatePlaylist;
