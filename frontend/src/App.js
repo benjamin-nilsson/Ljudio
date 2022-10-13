@@ -19,7 +19,7 @@ import EventBus from "./common/EventBus";
 import Header from "./components/Header";
 import CreatePlaylist from "./components/CreatePlaylist";
 import Playback from "./components/Playback";
-import Playlist from "./components/Playlist";
+import Playlist from "./components/UsersPlaylists";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
