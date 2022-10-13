@@ -1,9 +1,8 @@
-.home {
+.playlist-home {
   justify-content: center;
   text-align: center;
   min-height: 100vh;
   margin-top: 10rem;
-  overflow: auto;
   width: 100%;
 }
 
@@ -18,14 +17,14 @@
   font-size: 24px;
 }
 
-.create-playlist {
+.my-playlists {
   padding-left: 10%;
   padding-right: 10%;
   display: flex;
   justify-content: space-between;
 }
 
-.create-playlist p {
+.my-playlists p {
   font-weight: 700;
   font-size: 24px;
 }
