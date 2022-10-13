@@ -25,6 +25,7 @@ import EventBus from "./common/EventBus";
 import Header from "./components/Header";
 import CreatePlaylist from "./components/CreatePlaylist";
 import Playlist from "./components/Playlist";
+import UsersPlaylists from "./components/UsersPlaylists";
 
 const App = () => {
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -73,7 +74,7 @@ const App = () => {
                 element={<Navigate to="/playlist-user" replace />}
               />
             )}
-            <Route path="/playlist" element={<Playlist />} />
+            <Route path="/playlist-user" element={<UsersPlaylists />} />
             <Route path="/login" element={<Login />} />
             <Route path="/find" element={<Find />} />
             <Route path="/register" element={<Register />} />

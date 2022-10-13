@@ -22,13 +22,12 @@ public class SearchService {
     private SongService songService;
     private ArtistService artistService;
     private AlbumService albumService;
-    private String token = "BQDKwLuFIYXWCSQ2OhIaF63yoQ4Qd9SKf9ZWYZu2eo0DqwIiIll34GG5NqVlHz4kCyp56P6NScfYuCdHW5VPYaJ4bGW0D8ryxKJfJDY1BWcyYySXbQ6dEfSFG4HP3YQuQxl9R0xG5Bcb1CVc-hHMoqEoa45D92EVzBhG9bxCZuqKGkvFsHBPWAk";
+    private String token = "BQCqJFtTjOOVCm2zLfAhcG6nlXkv2IPM-g4mPgLn6urDHGa7LWo-7L6XugjqYBg0sESHspst0uL8H31rj9ObVdOnJkrADj3dqVlq-YKHZXq0-KmWbu8tsBc-HAHHcKHmV6PZVrtB5oRozmt-F13GOGiFi70vV1n15lEZlvO2B14xAej_b5O1yhY";
     public SearchService(SongService songService, ArtistService artistService, AlbumService albumService) {
         this.songService = songService;
         this.artistService = artistService;
         this.albumService = albumService;
     }
-
 
     public List<Map<String, Map<String, String>>> search(String title, String artist) {
         BufferedReader reader;
