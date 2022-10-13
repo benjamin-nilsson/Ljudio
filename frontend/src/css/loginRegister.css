@@ -27,6 +27,7 @@
 
 input {
     color: black;
+    outline: none;
 }
 
 .form-control {
