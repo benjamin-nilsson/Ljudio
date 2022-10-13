@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { useNavigate } from "react-router";
-import { addPlaylistToUser, addPlaylist } from "./../client";
+import { addPlaylistToUser, addPlaylist } from "../client";
 import { Input, Col, Form, Row, Button } from "antd";
 import { Link } from "react-router-dom";
 
@@ -61,7 +61,7 @@ const CreatePlaylist = () => {
     addPlaylistToUser(1, createdPlaylist.id);
     console.log(createdPlaylist.id);
     setPlaylist(createdPlaylist);
-    navigate("/user-playlists");
+    navigate("/playlist-user");
     window.location.reload();
   };
 
