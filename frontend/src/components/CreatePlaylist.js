@@ -61,13 +61,15 @@ const CreatePlaylist = () => {
     addPlaylistToUser(1, createdPlaylist.id);
     console.log(createdPlaylist.id);
     setPlaylist(createdPlaylist);
+    navigate("/user-playlists");
+    window.location.reload();
   };
 
   const renderForm = (
     <div>
       <form onSubmit={onFinish}>
         <div>
-          <label>Name your playlist</label>
+          <label className="create-label">Name your playlist</label>
           <input
             onChange={(e) => {
               setPlaylistName(e.target.value);
@@ -77,7 +79,7 @@ const CreatePlaylist = () => {
             required
           />
         </div>
-        <input type="submit" value="Playlist Name" />
+        <input type="submit" value="Create playlist" />
       </form>
     </div>
   );
@@ -85,7 +87,6 @@ const CreatePlaylist = () => {
   return (
     <div className="create-playlist">
       <div>
-        <div>Create Playlist</div>
         <div>{isSubmitted ? navigate("/playlist") : renderForm}</div>
       </div>
     </div>
