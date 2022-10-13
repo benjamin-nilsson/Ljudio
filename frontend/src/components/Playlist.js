@@ -3,7 +3,7 @@ import PlaylistSongs from "./PlaylistSongs";
 
 import { PlayCircleFilled } from "@ant-design/icons";
 
-const Playlist = ({ playlistName, playlistId, username, image }) => {
+const Playlist = ({ playlistName, playlistId, username, image, userId }) => {
   return (
     <div
       style={{
@@ -34,7 +34,12 @@ const Playlist = ({ playlistName, playlistId, username, image }) => {
           fontSize: "2rem",
         }}
       />
-      <PlaylistSongs playlistId={playlistId} />
+      {console.log(playlistId + "halllllllååååå")}
+      <PlaylistSongs
+        playlistId={playlistId}
+        playlistName={playlistName}
+        userId={userId}
+      />
     </div>
   );
 };

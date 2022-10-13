@@ -11,14 +11,9 @@ class EmployeeService {
     return axios.get(EMPLOYEE_BASE_REST_API_URL + "/" + userId + "/playlists");
   }
 
-
-    getUserPlaylist(userId){
-        return axios.get(EMPLOYEE_BASE_REST_API_URL + '/' + userId + '/playlists'  )
-    }
-
-    createEmployee(user){
-        return axios.post(EMPLOYEE_BASE_REST_API_URL, user)
-    }
+  createEmployee(user) {
+    return axios.post(EMPLOYEE_BASE_REST_API_URL, user);
+  }
 
   getEmployeeById(userId) {
     return axios.get(EMPLOYEE_BASE_REST_API_URL + "/" + userId);

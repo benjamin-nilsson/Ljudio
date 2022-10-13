@@ -5,16 +5,34 @@ import Footer from "./Footer";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { RightOutlined, PlusOutlined } from "@ant-design/icons";
-import { Button, Col, Row } from "antd";
+import { Modal, Button, Col, Row } from "antd";
 import AuthService from "../services/auth.service";
 import EmployeeService from "../services/EmployeeService";
 import { getUserPlaylists, getUser } from "./../client";
+import Playlist from "./Playlist";
 
 const Home = () => {
   const [content, setContent] = useState("");
   const [playlists, setPlaylists] = useState(null);
   const user = AuthService.getCurrentUser();
   const service = EmployeeService;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const hasSong = (result) => {
+    if (result.songs[0].length === 0) {
+      return {};
+    } else {
+      return result.songs[0].albumImage;
+    }
+  };
 
   useEffect(() => {
     UserService.getUserBoard().then(
@@ -46,12 +64,13 @@ const Home = () => {
     <div className="playlist-home">
       <Header />
       <div className="profile-image">
-        <a href="/profile"><img
-          src={
-            "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-          }
-
-        /></a>
+        <a href="/profile">
+          <img
+            src={
+              "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+            }
+          />
+        </a>
       </div>
       <div className="profile-user">
         <p>{user.username}</p>
@@ -66,11 +85,9 @@ const Home = () => {
         />
       </div>
       <div style={{ margin: "1rem 0" }}>
-        {console.log(user.id)}
-        {console.log(playlists)}
         {playlists != null &&
           playlists.map((result, index) => (
-            <div key={index}>
+            <div key={index} onClick={showModal}>
               <Row
                 style={{
                   paddingTop: "1rem",
@@ -80,25 +97,45 @@ const Home = () => {
                 }}
               >
                 <Col span={5}>
-                  <img src={""} alt="" />
+                  {console.log(result.songs.length === 0)}
+                  {result.songs.length === 0 ? (
+                    <img src={""} />
+                  ) : (
+                    <img src={result.songs[0].albumImage} alt="" />
+                  )}
                 </Col>
                 <Col span={17}>
                   <div>
-                    <a href="/playlist">
-                      <h3
-                        style={{
-                          color: "#fff",
-                          marginBottom: "0",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        {result.name}
-                      </h3>
-                    </a>
+                    <h3
+                      style={{
+                        color: "#fff",
+                        marginBottom: "0",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {result.name}
+                    </h3>
                     <p style={{ color: "#fff", marginBottom: "0" }}>{""}</p>
                   </div>
                 </Col>
                 <Col span={2}></Col>
+                {console.log(result.id + "  " + result.name + "none")}
+                <Modal
+                  footer={null}
+                  closable={false}
+                  onCancel={handleCancel}
+                  open={isModalOpen}
+                >
+                  <Playlist
+                    playlistName={result.name}
+                    userId={user.id}
+                    playlistId={result.id}
+                    username={user.username}
+                    image={() => {
+                      hasSong(result);
+                    }}
+                  />
+                </Modal>
               </Row>
             </div>
           ))}

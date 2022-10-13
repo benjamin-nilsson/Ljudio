@@ -5,9 +5,10 @@ import Footer from "./Footer";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { useNavigate } from "react-router";
-import { addPlaylistToUser, addPlaylist } from "../client";
+import { addPlaylistToUser, addPlaylist } from "./../client";
 import { Input, Col, Form, Row, Button } from "antd";
 import { Link } from "react-router-dom";
+import AuthService from "../services/auth.service";
 
 const CreatePlaylist = () => {
   const [content, setContent] = useState("");
@@ -15,6 +16,7 @@ const CreatePlaylist = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [playlistName, setPlaylistName] = useState("");
   const isFirstRender = useRef(true);
+  const user = AuthService.getCurrentUser();
   const [loading, setLoading] = useState(false);
 
   const newPlaylist = {
@@ -45,21 +47,10 @@ const CreatePlaylist = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchPlaylistToUser = () => {
-      addPlaylistToUser(1, 1);
-      console.log("hello");
-    };
-    fetchPlaylistToUser();
-  }, [playlist]);
-
   const onFinish = () => {
-    console.log(playlist);
     newPlaylist.name = playlistName;
-    console.log(newPlaylist.name);
     let createdPlaylist = addPlaylist(newPlaylist);
-    addPlaylistToUser(1, createdPlaylist.id);
-    console.log(createdPlaylist.id);
+    addPlaylistToUser(user.id, 1);
     setPlaylist(createdPlaylist);
     navigate("/playlist-user");
     window.location.reload();
@@ -87,7 +78,7 @@ const CreatePlaylist = () => {
   return (
     <div className="create-playlist">
       <div>
-        <div>{isSubmitted ? navigate("/playlist") : renderForm}</div>
+        <div>{isSubmitted ? navigate("/playlist-user") : renderForm}</div>
       </div>
     </div>
   );
