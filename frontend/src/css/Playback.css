@@ -19,7 +19,7 @@
     overflow: hidden;
 }
 
-.playback-all, img{
+.playback-all img{
     position: absolute;
     width: 390px;
     height: 782px;

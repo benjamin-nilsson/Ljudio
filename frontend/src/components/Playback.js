@@ -3,6 +3,7 @@ import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import "../css/Playback.css"
 import {Button, Col, Row} from "antd";
+import {nextSong, prevSong} from "../client";
 import {
     DownOutlined,
     MoreOutlined,
@@ -10,10 +11,16 @@ import {
     StepBackwardFilled,
     StepForwardFilled
 } from "@ant-design/icons";
+import fetch from "unfetch";
 
 
-const Playback = ({id, src, title, artist}) => {
+const Playback = ({id, source, titles, artists}) => {
     const [content, setContent] = useState("");
+    const [next, setNext] = useState({});
+    const [prev, setPrev] = useState({});
+    const [title, setTitle] = useState(titles);
+    const [artist, nextArtist] = useState(artists)
+    const [src, setSrc] = useState(source)
 
     useEffect(() => {
         UserService.getUserBoard().then(
@@ -37,9 +44,13 @@ const Playback = ({id, src, title, artist}) => {
         );
     }, []);
 
+    const nextSong = () => {
+        setNext(nextSong)
+    }
+
     return (
         <div className="playback-all">
-            <img src={src}/>
+            <img src={src} alt=""/>
         <div className="playback-header" >
             <Row justify="space-between">
             <Col span={4}>
@@ -50,19 +61,11 @@ const Playback = ({id, src, title, artist}) => {
                 icon=<DownOutlined style={{ fontSize: "175%" }}/>
             />
             </Col>
-                <Col span={4}>
-                <div className="playlist-tag">
-                    playlist
-                </div>
-                <div className="playlist-image">
-                    <b> party </b>
-                </div>
-                </Col>
             <Col span={4}>
             <Button
                 className="header-button"
                 type="back"
-                href=""
+                href="javascript:history.back()"
                 icon=<MoreOutlined style={{ fontSize: "175%" }}/>
             />
             </Col>

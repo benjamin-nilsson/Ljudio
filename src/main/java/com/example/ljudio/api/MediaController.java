@@ -4,10 +4,7 @@ import com.example.ljudio.model.Song;
 import com.example.ljudio.service.MediaService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -21,4 +18,10 @@ public class MediaController {
     public Song getSong(@PathVariable("song") long songId,@PathVariable("playlistId") long playlistId) {
         return mediaService.song(songId, playlistId);
     }
+
+    @GetMapping("/next")
+    public Song nextSong() {return mediaService.next();}
+
+    @GetMapping("/previous")
+    public Song prevSong() {return mediaService.previous();}
 }

@@ -81,3 +81,9 @@ export const getUserPlaylists = (userId) =>
 
 export const getUser = (userId) =>
   fetch(`/api/user/${userId}`).then(checkStatus);
+
+export const nextSong =  () =>
+    fetch('/api/mediaplayer/next').then(checkStatus)
+
+export const prevSong =  () =>
+    fetch('/api/mediaplayer/previous').then(checkStatus)
