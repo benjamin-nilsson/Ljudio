@@ -14,19 +14,19 @@ const Footer = () => {
         <Button
           className="footer-button"
           type="home"
-          href="/"
+          href="/user-playlists"
           icon={<HomeOutlined style={{ fontSize: "175%" }} />}
         />
         <Button
           className="footer-button"
-          type="search"
-          href="/search"
+          type="find"
+          href="/find"
           icon={<SearchOutlined style={{ fontSize: "175%" }} />}
         />
         <Button
           className="footer-button"
-          type="playlist"
-          href="/playlist"
+          type="user-playlists"
+          href="/user-playlists"
           icon={<MenuUnfoldOutlined style={{ fontSize: "175%" }} />}
         />
       </div>
