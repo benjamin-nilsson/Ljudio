@@ -13,6 +13,7 @@ import {
   getUser,
 } from "../../client"; //need all users playlists
 import EmployeeService from "../../services/EmployeeService";
+import {useNavigate} from "react-router-dom";
 
 const Playlists = ({ id }) => {
   const [song, setSong] = useState({});
@@ -21,6 +22,7 @@ const Playlists = ({ id }) => {
   const currentUser = AuthService.getCurrentUser();
   const [playlists, setPlaylists] = useState(null);
   const service = EmployeeService;
+  const naviagte = useNavigate();
 
   const fetchSong = async () => {
     const res = await track(id);
@@ -71,6 +73,7 @@ const Playlists = ({ id }) => {
     addSong(song);
     addSongToPlaylist(playlistId, id);
     addAlbum(theAlbum);
+
   };
 
   return (
